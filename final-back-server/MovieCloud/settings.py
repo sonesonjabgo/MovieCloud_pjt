@@ -34,7 +34,9 @@ INSTALLED_APPS = [
     'movies',
     'articles',
     'accounts',
-    
+    'django_seed',
+    'rest_framework',
+    'django_extensions',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

@@ -10,7 +10,7 @@ class Movie(models.Model):
     poster_path = models.CharField(max_length=200)
     release_date = models.DateField()
     comments_users = models.ManyToManyField(settings.AUTH_USER_MODEL,through='Comment')
-    # like_users = models.ManyToManyField() accounts 모델 만들고 하기
+    like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_movies')
 
 
 class Comment(models.Model):
