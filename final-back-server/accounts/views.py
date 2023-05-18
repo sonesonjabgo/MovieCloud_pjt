@@ -14,7 +14,7 @@ from rest_framework.permissions import IsAuthenticated
 @require_safe
 def profile(request, username):
     person = get_user_model().object.get(username=username)
-    serializer = ProfileSerializer(person)
+    serializer = FollowSerializer(person)
     return Response(serializer.data)
 
 

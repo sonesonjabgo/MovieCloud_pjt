@@ -15,9 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from accounts import views as account_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('movies/', include('movies.urls')),
     path('articles/', include('articles.urls')),
+    # path('accounts/', include('dj_rest_auth_urls'))
+    # path('accounts/signup',  include('dj_rest_auth.registration.urls')),
+    path('<username>', account_views.profile),
+    path('<username>/follow', account_views.follow)
+
 ]

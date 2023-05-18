@@ -7,5 +7,5 @@ class FollowSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('')
+        fields = ('id', 'username', 'password', 'first_name',)
 
