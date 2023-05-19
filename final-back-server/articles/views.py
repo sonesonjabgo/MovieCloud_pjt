@@ -57,3 +57,12 @@ def comment_post(request, article_pk):
     if serializer.is_valid(raise_exception=True):
         serializer.save(article=article, user=request.user)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+    
+# 코멘트 삭제
+@api_view(['DELETE'])
+# @permission_classes([IsAuthenticated])
+def comment_delete(request, article_pk, comment_id):
+    article = Article.objects.get(pk=article_pk)
+    comment = article.article_comments.all().get(id=comment_id)
+    comment.delete()
+    return Response(status=status.HTTP_204_NO_CONTENT)
