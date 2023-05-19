@@ -1,12 +1,12 @@
 from django.db import models
 from django.conf import settings
-from movies.models import Movie
+
 
 # Create your models here.
 class Article(models.Model):
     title = models.CharField(max_length=100)
     content = models.TextField()
-    user_id = models.ForeignKey(Movie, on_delete=models.CASCADE, related_name='articles')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='articles')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     comments_users = models.ManyToManyField(settings.AUTH_USER_MODEL,through='Comment')

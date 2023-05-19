@@ -72,7 +72,7 @@ def search(request, keyword):
     search_list = []
     # 전체 영화에서 title에 keyword가 들어가면 search_list에 추가
     for movie in movies:
-        if keyword in movie.title:
+        if keyword in movie.title or keyword in movie.overview:
             search_list.append(movie)
     serializer = MovieListSerializer(search_list, many=True)
     return Response(serializer.data)
