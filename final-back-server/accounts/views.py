@@ -3,7 +3,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST, require_safe, require_http_methods
 from rest_framework.response import Response
-from .serializers import FollowSerializer, ProfileSerializer
+from .serializers import FollowSerializer
 
 from rest_framework.decorators import permission_classes
 from rest_framework.permissions import IsAuthenticated

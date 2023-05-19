@@ -1,0 +1,47 @@
+movie detail 조회 시 
+- 단일 movie 세부 정보
+- 단일 movie의 댓글
+-- 현재 댓글을 단 user_id만 나옴
+
+현재 Comment 필드는 content를 가진
+user와 movie의 중개 필드이다.
+
+views.py 에 comment_create로 
+단일 movie 정보 받아와서 
+메소드 post, get으로 나눴다.
+> comment create 이름 아래에 comment 생성과 
+> comments 전체 정보를 가져오게 하는 것은 맞지 않는 듯
+>> comment_create 이름 변경해야 함(처리 완료)
+
+>> 현재 get 요청 처리도 안됨. (처리 완료)
+get 요청 처리 로직
+url에 movie_pk를 담아서 get 요청을 comment_create로 보낸다.
+comments = movie.comment_set.all( )
+위의 코드에 문제가 있다.
+models 에 명시해놓은 related_name 사용해서 해결
+
+이젠 movie_detail로 단일 movie 세부 정보 확인했을 때
+movie 아래 달린 comment 정보도 확인할 수 있어야 함
+
+접근하는 순서를 생각해봅시다.
+단일 movie는 comments_users (단일 movie를 생성한 user_id)를 갖고 있음
+그런데 user_id로 comments에 접근할 때 movie에 관련한 comments에 접근하는 것이 아니니
+수정이 필요함.
+땡
+각각의 comment로 접근하여 comment_users를 주기 때문에 이것을 활용하면 된다
+
+생각의 전환 ..
+사실 그럴 필요 없었다
+단일 영화 조회를 할 때
+vue에서 처리를 한 라우터에 대해 (영화 단일 정보 페이지)
+컴포넌트를 두 개 만들어서 영화 상세정보 컴포넌트 + 해당 영화의 코멘트 리스트 컴포넌트
+로 처리하면 됐다.
+>>> movie serializer 수정만 하면 됨. (comments_users 안 받게)
+
+popularity 기준, vote_average 기준 상위 10개 리스트 넘겨주는 뷰 (완료)
+검색으로 관련된 영화 나오게 하는 뷰 (완료)
+코멘트 삭제 
+
+코멘트 삭제를 하려면
+단일 movie를 통해 전체 comments를 얻어내고 그 중 해당하는 comment를 지워야 한다.
+
