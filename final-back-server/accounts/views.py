@@ -13,7 +13,6 @@ from rest_framework.permissions import IsAuthenticated
 # Create your views here.
 
 @api_view(['GET'])
-
 def profile(request, username):
     # username으로 들어가서 이 username을 가진 사용자의 프로필을 보여줌
     person = get_object_or_404(User, username=username)
