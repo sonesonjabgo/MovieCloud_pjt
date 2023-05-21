@@ -2,7 +2,8 @@ from django.shortcuts import render
 from .models import Movie
 from .serializers import MovieSerializer, MovieListSerializer, CommentSerializer
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
 from django.conf import settings
 from django.shortcuts import get_object_or_404
@@ -32,7 +33,7 @@ def comment_list(request, movie_pk):
 
 # 코멘트 생성
 @api_view(['POST'])
-# @permission_classes([IsAuthenticated])
+@permission_classes([IsAuthenticated])
 def comment_post(request, movie_pk):
     movie = Movie.objects.get(pk=movie_pk)
     serializer = CommentSerializer(data=request.data)
@@ -42,7 +43,7 @@ def comment_post(request, movie_pk):
 
 # 코멘트 삭제
 @api_view(['DELETE'])
-# @permission_classes([IsAuthenticated])
+@permission_classes([IsAuthenticated])
 def comment_delete(request, movie_pk, comment_id):
     movie = Movie.objects.get(pk=movie_pk)
     comment = movie.movie_comments.all().get(id=comment_id)
@@ -76,3 +77,14 @@ def search(request, keyword):
             search_list.append(movie)
     serializer = MovieListSerializer(search_list, many=True)
     return Response(serializer.data)
+
+# 좋아요 기능
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def likes(request, movie_pk):
+    if request.user.is_authenticated:
+        movie = Movie.objects.get(pk=movie_pk)
+        if movie.like_users.filter(pk=request.user.pk).exists():
+            movie.like_users.remove(request.user)
+        else:
+            movie.like_users.add(request.user)
