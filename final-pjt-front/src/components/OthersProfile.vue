@@ -5,7 +5,7 @@
       <p>팔로워        {{follower}}</p>
       <!-- <p>3    10</p> -->
   
-      <button>팔로우</button> <!-- 로그인한 사람이랑 프로필 주인 다를때 표시 -->
+      <button @click="follow">팔로우</button> <!-- 로그인한 사람이랑 프로필 주인 다를때 표시 -->
   </div>
   </template>
   
@@ -17,6 +17,7 @@
               username: this.$router.params.username, // url에 적히는 username 가져올거임
               following: this.$store.state.profile_userfollowing,
               follower: this.$store.state.profile_userfollower,
+              userid: this.$store.state.profile_userid,
           }
       },
       created(){
@@ -31,6 +32,14 @@
               }
   
               this.$store.dispatch('get_profile', payload)
+          },
+          follow(){
+            const userid = this.userid
+            const payload = {
+                userid,
+            }
+
+            this.$store.dispatch('follow', payload)
           }
       }
   

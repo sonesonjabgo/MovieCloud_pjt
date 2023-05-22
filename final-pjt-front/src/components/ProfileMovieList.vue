@@ -1,9 +1,12 @@
 <template>
   <div>
     <h3>{{ username }}님이 좋아요 누른 영화</h3>
-    <ProfileMovieListItem 
-    v-for="movie in movies" :key="movie.id" :movie="movie"
-    />
+    <div>
+      <ProfileMovieListItem 
+      v-for="movie in movies" :key="movie.id" :movie="movie"
+      />
+    </div>
+    
   </div>
 </template>
 

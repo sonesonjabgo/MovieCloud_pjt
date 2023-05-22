@@ -1,9 +1,12 @@
 <template>
   <div>
-    <h3>{{ username }}님 작성한 게시글</h3>
-    <ProfileArticleListItem 
-    v-for="article in articles" :key="article.id" :article="article"
-    />
+    <h3>{{ username }}님이 작성한 게시글</h3>
+    <div>
+      <ProfileArticleListItem 
+      v-for="article in articles" :key="article.id" :article="article"
+      />
+    </div>
+    
   </div>
 </template>
 
@@ -11,7 +14,7 @@
 import ProfileArticleListItem from './ProfileArticleListItem.vue';
 
 export default {
-    name: "ProfileMovieList",
+    name: "ProfileArticleList",
     data(){
       return {
         username: this.$store.state.profile_username
@@ -25,9 +28,8 @@ export default {
           return this.$store.state.articles.filter((element)=>{ element.user == this.$store.state.profile_userid})
       }
     },
-    created(){
-      
-    }
+    methods: {
+    },
     
 }
 </script>

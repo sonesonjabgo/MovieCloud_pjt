@@ -4,10 +4,13 @@
     <nav :class="{ 'nav-fixed': isNavFixed, 'nav-hidden': isNavHidden }">
       <router-link to="/" class="left-link">Home</router-link>
       <!-- <router-link to="/about">About</router-link> | -->
-      <div class="right-links">
+      <div v-if="isLogin" class="right-links"> <!-- login 했으면 profile, logout만 -->
+        <router-link to="/logout">Logout</router-link> <br />
+        <router-link to="/profile">Profile</router-link> <br />
+      </div>
+      <div v-if="!isLogin" class="right-links"> <!-- login 안 했으면 login, signup만 -->
         <router-link to="/login">Login</router-link> <br />
         <router-link to="/signup">Signup</router-link> <br />
-        <router-link to="/profile">Profile</router-link> 
       </div>
     </nav>
     <div id="router-view-bg">
@@ -30,6 +33,11 @@ export default {
   beforeDestroy() {
     window.removeEventListener('scroll', this.handleScroll);
   },
+  computed:{
+    isLogin() {
+      return this.$store.getters.isLogin // 로그인 여부
+    }
+  },
   methods: {
     handleScroll() {
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -38,6 +46,9 @@ export default {
       this.isNavFixed = scrollTop >= threshold;
       this.isNavHidden = scrollTop >= threshold;
     },
+    logout(){
+
+    }
   },
 };
 </script>
@@ -89,4 +100,5 @@ nav a {
 nav a.router-link-exact-active {
   color: rgb(190, 110, 243);
 }
+
 </style>

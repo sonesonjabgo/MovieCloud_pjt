@@ -17,6 +17,7 @@ export default new Vuex.Store({
     token: null,
     movies: [],
     users: [],
+    articles: [],
     login_username: null,
     profile_username: null,
     profile_userid: null,
@@ -27,37 +28,53 @@ export default new Vuex.Store({
   getters: {
     login_same(state) {
       return state.login_username == state.profile_username ? true : false
-    }
+    },
+    isLogin(state) {
+      return state.token ? true : false
+    },
   },
   mutations: {
     // signup, login 완료하면 토큰 발급, login한 username 저장
     SAVE_TOKEN(state, dataArray) {
+      console.log(dataArray)
       state.token = dataArray[0]
       state.login_username = dataArray[1]
       state.profile_username = dataArray[1]
       router.push({name:'home'})
     },
+    GET_MOVIES(state, movies) {
+      state.movies = movies
+    },
+    LOGOUT(state) {
+      state.token = null
+      state.login_username = null
+      state.profile_username = null
+      state.profile_userid = null
+      state.profile_userfollower = null
+      state.profile_userfollowing = null
+    },
     GET_USERS(state, users) {
       state.users = users
+    },
+    GET_ARTICLES(state, articles) {
+      state.articles = articles
     },
     SET_PROFILE(state, userdata){ // 현재 프로필 페이지의 user 정보 저장 (내가 내 프로필 볼 경우 대비)
       console.log(userdata)
       state.profile_userid = userdata.id
-      state.profile_username= userdata.name
+      state.profile_username= userdata.username
       state.profile_userfollower = userdata.follower_count
       state.profile_userfollowing = userdata.following_count
 
     },
-    // GET_PROFILE(state, filteredUsers){
-    //   state.profile_userid = filteredUsers.id
-    //   state.profile_username = filteredUsers.username
-    //   state.profile_userfollower = filteredUsers.follower_count
-    //   state.profile_userfollowing = filteredUsers.following_count
-    // },
     SEARCH_KEYWORD(state, data) {
       state.searchlist = data
       console.log(data)
-    }
+    },
+    FOLLOW(state, data) {
+      state.profile_userfollower = data.follower_count
+      state.profile_userfollowing = data.following_count
+    },
   },
   actions: {
     signUp(context, payload){
@@ -98,6 +115,22 @@ export default new Vuex.Store({
           console.log(err)
         })
     },
+    logout(context){
+      context.commit('LOGOUT')
+    },
+    getMovies(context) {
+      axios({
+        method: 'get',
+        url: `${API_URL}/movies/list/`,
+      })
+        .then((res) => {
+        // console.log(res, context)
+          context.commit('GET_MOVIES', res.data)
+        })
+        .catch((err) => {
+        console.log(err)
+      })
+    },
     getUsers(context) {
       axios({
         method: 'get',
@@ -111,18 +144,19 @@ export default new Vuex.Store({
         console.log(err)
       })
     },
-    // getProfileMovie(context){
-    //   axios({
-    //     method: 'get',
-    //     url: `${API_URL}/movies/list/`
-    //   })
-    //     .then((res) => {
-    //       context.commit('GET_PROFILE_MOVIE', res.data)
-    //     })
-    //     .cathch((err) => {
-    //       console.log(err)          
-    //     })
-    // }
+    getArticles(context) {
+      axios({
+        method: 'get',
+        url: `${API_URL}/articles/list/`,
+      })
+        .then((res) => {
+        // console.log(res, context)
+          context.commit('GET_ARTICLES', res.data)
+        })
+        .catch((err) => {
+        console.log(err)
+      })
+    },
     profile(context, payload){ // 내가 내 프로필 볼때 받아올 프로필 정보
       const username = payload.username
 
@@ -146,6 +180,24 @@ export default new Vuex.Store({
     },
     searchKeyword(context, data){
       context.commit('SEARCH_KEYWORD', data)
+    },
+    follow(context, payload){
+      const userid = payload.userid
+
+      axios({
+        method: 'post',
+        url: `${API_URL}/${userid}/follow/`,
+        data: {
+          userid
+        }
+      })
+        .then((res) => {
+          context.commit('FOLLOW', res.data)
+          // context.commit('GET_LOGIN_USER', res.data)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
     }
   },
   modules: {
