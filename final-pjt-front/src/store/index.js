@@ -22,7 +22,7 @@ export default new Vuex.Store({
     profile_userid: null,
     profile_userfollower: null,
     profile_userfollowing: null,
-
+    searchlist: null,
   },
   getters: {
     login_same(state) {
@@ -54,6 +54,10 @@ export default new Vuex.Store({
     //   state.profile_userfollowing = filteredUsers.following_count
 
     // }
+    SEARCH_KEYWORD(state, data) {
+      state.searchlist = data
+      console.log(data)
+    }
   },
   actions: {
     signUp(context, payload){
@@ -139,6 +143,9 @@ export default new Vuex.Store({
 
       const filteredUsers = this.$store.state.users.filter(user => user.username === username)
       this.commit('SET_PROFILE', filteredUsers)
+    },
+    searchKeyword(context, data){
+      context.commit('SEARCH_KEYWORD', data)
     }
   },
   modules: {

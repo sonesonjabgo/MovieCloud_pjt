@@ -9,5 +9,5 @@ urlpatterns = [
     path('<int:movie_pk>/comment/<int:comment_id>/', views.comment_delete),
     path('top_rated/', views.top_rated_list),
     path('popularity/', views.popularity_list),
-    path('<str:keyword>/', views.search),
+    path('search/<str:keyword>/', views.search),
 ]
