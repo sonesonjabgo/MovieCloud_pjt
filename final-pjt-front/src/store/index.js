@@ -15,6 +15,7 @@ export default new Vuex.Store({
   ],
   state: {
     token: null,
+    searchlist: null,
   },
   getters: {
   },
@@ -23,6 +24,10 @@ export default new Vuex.Store({
     SAVE_TOKEN(state, token) {
       state.token = token
       router.push({name:'home'})
+    },
+    SEARCH_KEYWORD(state, data) {
+      state.searchlist = data
+      console.log(data)
     }
   },
   actions: {
@@ -62,6 +67,9 @@ export default new Vuex.Store({
         .catch((err) => {
           console.log(err)
         })
+    },
+    searchKeyword(context, data){
+      context.commit('SEARCH_KEYWORD', data)
     }
   },
   modules: {

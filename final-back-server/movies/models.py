@@ -7,6 +7,7 @@ class Movie(models.Model):
     vote_average = models.FloatField()
     overview = models.TextField()
     popularity = models.FloatField()
+    backdrop_path = models.CharField(max_length=200, null=True)
     poster_path = models.CharField(max_length=200)
     release_date = models.DateField()
     comments_users = models.ManyToManyField(settings.AUTH_USER_MODEL,through='Movie_Comment')

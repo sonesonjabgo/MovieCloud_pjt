@@ -50,19 +50,19 @@ def comment_delete(request, movie_pk, comment_id):
     comment.delete()
     return Response(status=status.HTTP_204_NO_CONTENT)
 
-# 전체 영화 중 vote_average 기준 상위 10개 넘겨주는 view
+# 전체 영화 중 vote_average 기준 상위 20개 넘겨주는 view
 @api_view(['GET'])
 def top_rated_list(request):
     movies = Movie.objects.all()
-    movies = sorted(movies, key=lambda movies: movies.vote_average, reverse=True)[:10]
+    movies = sorted(movies, key=lambda movies: movies.vote_average, reverse=True)[:20]
     serializer = MovieListSerializer(movies, many=True)
     return Response(serializer.data)
 
-# 전체 영화 중 popularity 기준 상위 10개 넘겨주는 view
+# 전체 영화 중 popularity 기준 상위 20개 넘겨주는 view
 @api_view(['GET'])
 def popularity_list(request):
     movies = Movie.objects.all()
-    movies = sorted(movies, key=lambda movies: movies.popularity, reverse=True)[:10]
+    movies = sorted(movies, key=lambda movies: movies.popularity, reverse=True)[:20]
     serializer = MovieListSerializer(movies, many=True)
     return Response(serializer.data)
 
