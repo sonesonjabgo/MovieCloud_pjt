@@ -3,7 +3,7 @@ from . import views
 
 urlpatterns = [
     path('list/', views.movie_list),
-    path('<int:movie_pk>/', views.movie_detail),
+    path('<int:movie_id>/', views.movie_detail),
     path('<int:movie_pk>/comment/', views.comment_list),
     path('<int:movie_pk>/comment/', views.comment_post),
     path('<int:movie_pk>/comment/<int:comment_id>/', views.comment_delete),

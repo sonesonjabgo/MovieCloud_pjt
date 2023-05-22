@@ -15,10 +15,10 @@ def movie_list(request):
     serializer = MovieListSerializer(movies, many=True)
     return Response(serializer.data)
 
-# 영화 세부정보
+# 단일 영화 세부정보
 @api_view(['GET'])
-def movie_detail(request, movie_pk):
-    movie = Movie.objects.get(pk=movie_pk)
+def movie_detail(request, movie_id):
+    movie = Movie.objects.get(id=movie_id)
     serializer = MovieSerializer(movie)
     return Response(serializer.data)
 

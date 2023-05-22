@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-
     <nav :class="{ 'nav-fixed': isNavFixed, 'nav-hidden': isNavHidden }">
       <router-link to="/" class="left-link">Home</router-link>
       <!-- <router-link to="/about">About</router-link> | -->
@@ -69,6 +68,7 @@ export default {
 }
 nav {
   display: flex;
+  height: 80px;
   justify-content: space-between;
   align-items: center;
   background-color: #316f9c;

@@ -23,6 +23,7 @@ export default new Vuex.Store({
     profile_userfollower: null,
     profile_userfollowing: null,
     searchlist: null,
+    movie_detail_data: null,
   },
   getters: {
     login_same(state) {
@@ -35,15 +36,15 @@ export default new Vuex.Store({
       state.token = dataArray[0]
       state.login_username = dataArray[1]
       state.profile_username = dataArray[1]
-      router.push({name:'home'})
+      router.push({ name: 'home' })
     },
     GET_USERS(state, users) {
       state.users = users
     },
-    SET_PROFILE(state, userdata){ // 현재 프로필 페이지의 user 정보 저장 (내가 내 프로필 볼 경우 대비)
+    SET_PROFILE(state, userdata) { // 현재 프로필 페이지의 user 정보 저장 (내가 내 프로필 볼 경우 대비)
       console.log(userdata)
       state.profile_userid = userdata.id
-      state.profile_username= userdata.name
+      state.profile_username = userdata.name
       state.profile_userfollower = userdata.follower_count
       state.profile_userfollowing = userdata.following_count
 
@@ -56,11 +57,15 @@ export default new Vuex.Store({
     // },
     SEARCH_KEYWORD(state, data) {
       state.searchlist = data
-      console.log(data)
+      // console.log(data)
+    },
+    PICK_MOVIE(state, data) {
+      state.movie_detail_data = data
+      router.push({ name: 'movieDetail' })
     }
   },
   actions: {
-    signUp(context, payload){
+    signUp(context, payload) {
       const username = payload.username
       const password1 = payload.password1
       const password2 = payload.password2
@@ -71,7 +76,7 @@ export default new Vuex.Store({
         data: {
           username, password1, password2
         }
-      })  
+      })
         .then((res) => {
           context.commit('SAVE_TOKEN', res.data.key)
         })
@@ -79,7 +84,7 @@ export default new Vuex.Store({
           console.log(err)
         })
     },
-    login(context, payload){
+    login(context, payload) {
       const username = payload.username
       const password = payload.password
 
@@ -104,12 +109,12 @@ export default new Vuex.Store({
         url: `${API_URL}/accounts/users/`,
       })
         .then((res) => {
-        // console.log(res, context)
+          // console.log(res, context)
           context.commit('GET_USERS', res.data)
         })
         .catch((err) => {
-        console.log(err)
-      })
+          console.log(err)
+        })
     },
     // getProfileMovie(context){
     //   axios({
@@ -123,7 +128,7 @@ export default new Vuex.Store({
     //       console.log(err)          
     //     })
     // }
-    profile(context, payload){ // 내가 내 프로필 볼때 받아올 프로필 정보
+    profile(context, payload) { // 내가 내 프로필 볼때 받아올 프로필 정보
       const username = payload.username
 
       axios({
@@ -138,15 +143,27 @@ export default new Vuex.Store({
           console.log(err)
         })
     },
-    get_profile(context, payload){ // 다른 사람 프로필 볼때 받아올 프로필 정보
+    get_profile(context, payload) { // 다른 사람 프로필 볼때 받아올 프로필 정보
       const username = payload.username
 
       const filteredUsers = this.$store.state.users.filter(user => user.username === username)
       this.commit('SET_PROFILE', filteredUsers)
     },
-    searchKeyword(context, data){
+    searchKeyword(context, data) {
       context.commit('SEARCH_KEYWORD', data)
-    }
+    },
+    pickedMovie(context, movie_id) {
+      axios({
+        method: 'get',
+        url: `${API_URL}/movies/${movie_id}`,
+      })
+      .then((res)=>{
+        context.commit('PICK_MOVIE', res.data)
+      })
+      .catch((err)=>{
+        console.log(err)
+      })
+    },
   },
   modules: {
   }

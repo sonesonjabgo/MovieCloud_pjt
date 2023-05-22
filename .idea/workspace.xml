@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d778af8d-e5c1-4069-8641-eb546f1a5a69" name="변경" comment="">
+      <change beforePath="$PROJECT_DIR$/final-back-server/movies/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/final-back-server/movies/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/final-back-server/movies/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/final-back-server/movies/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/final-back-server/movies/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/final-back-server/movies/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/final-back-server/movies/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/final-back-server/movies/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/final-pjt-front/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/final-pjt-front/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/final-pjt-front/src/components/HighListItem.vue" beforeDir="false" afterPath="$PROJECT_DIR$/final-pjt-front/src/components/HighListItem.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/final-pjt-front/src/components/TopListItem.vue" beforeDir="false" afterPath="$PROJECT_DIR$/final-pjt-front/src/components/TopListItem.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/final-pjt-front/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/final-pjt-front/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/final-pjt-front/src/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/final-pjt-front/src/store/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/final-pjt-front/src/views/AboutView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/final-pjt-front/src/views/AboutView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/final-pjt-front/src/views/HomeView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/final-pjt-front/src/views/HomeView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/final-pjt-front/src/views/SearchListView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/final-pjt-front/src/views/SearchListView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue 5_22 생각.txt" beforeDir="false" afterPath="$PROJECT_DIR$/vue 5_22 생각.txt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ProjectId" id="2Q9tR1EjaZyl7gOVc32HZyK5C8M" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="애플리케이션 수준" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="디폴트 작업">
+      <changelist id="d778af8d-e5c1-4069-8641-eb546f1a5a69" name="변경" comment="" />
+      <created>1684777614096</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1684777614096</updated>
+    </task>
+    <servers />
+  </component>
+</project>

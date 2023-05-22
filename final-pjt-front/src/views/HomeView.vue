@@ -20,6 +20,7 @@
         />
       </div>
     </div>
+    <br>
     <div id="top-list" class="container">
       <div id="classification_name">
         <h1 class="big-text">Top</h1>
@@ -76,8 +77,8 @@ export default {
       })
         .then((res) => {
           this.topList = res.data
-          console.log(this.mainPoster)
-          console.log(this.topList)
+          // console.log(this.mainPoster)
+          // console.log(this.topList)
         })
         .catch((err) => {
           console.log(err)
@@ -92,7 +93,7 @@ export default {
           this.mainPoster =
             res.data[Math.floor(Math.random() * res.data.length)]
           this.highList = res.data;
-          console.log(this.highList)
+          // console.log(this.highList)
         })
         .catch((err) => {
           console.log(err)
@@ -124,11 +125,12 @@ export default {
   /* background-size: 280px 400px; */
   width: 280px;
   height: 400px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   object-fit: cover;
 }
 #card_div{
   width: auto;
+  padding: 40px;
 }
 .image-container {
   position: relative;
