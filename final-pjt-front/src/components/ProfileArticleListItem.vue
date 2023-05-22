@@ -1,18 +1,15 @@
 <template>
     <div>
-        <h2>{{article.title}}</h2><hr>
+        <h3>{{article.title}}</h3><hr>
     </div>
   </template>
   
   <script>
   export default {
-      name : 'ProfileArticleListItem',
+      name : 'ProfileArticleItem',
       props:{
           article : Object,
       },
-      computed:{
-        
-    }
   
   }
   </script>

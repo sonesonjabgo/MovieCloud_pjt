@@ -68,6 +68,9 @@ export default {
   created() {
     this.getTopList()
     this.getHighList()
+    this.getMovies()
+    this.getArticles()
+    this.getUsers()
   },
   methods: {
     getTopList() {
@@ -98,6 +101,15 @@ export default {
         .catch((err) => {
           console.log(err)
         })
+    },
+    getMovies(){
+      this.$store.dispatch('getMovies')
+    },
+    getArticles(){
+      this.$store.dispatch('getArticles')
+    },
+    getUsers(){
+      this.$store.dispatch('getUsers')
     },
   },
 };

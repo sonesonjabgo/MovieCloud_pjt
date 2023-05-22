@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 // import AboutView from '../views/AboutView.vue'
 import LoginView from '@/views/LoginView.vue'
+// import LogoutView from '@/views/LogoutView.vue'
 import SignUpView from '@/views/SignUpView.vue'
 
 import ProfileView from '@/views/ProfileView.vue'
@@ -33,6 +34,11 @@ const routes = [
     name: 'LogInView',
     component: LoginView
   },
+  // {
+  //   path: '/logout',
+  //   name: 'LogOutView',
+  //   component: LogoutView
+  // },
   {
     path: '/signup',
     name: 'SignUpView',
