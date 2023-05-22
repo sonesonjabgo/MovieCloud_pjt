@@ -34,12 +34,13 @@ export default new Vuex.Store({
     SAVE_TOKEN(state, dataArray) {
       state.token = dataArray[0]
       state.login_username = dataArray[1]
+      state.profile_username = dataArray[1]
       router.push({name:'home'})
     },
     GET_USERS(state, users) {
       state.users = users
     },
-    SET_PROFILE(state, userdata){ // 현재 프로필 페이지의 user 정보 저장
+    SET_PROFILE(state, userdata){ // 현재 프로필 페이지의 user 정보 저장 (내가 내 프로필 볼 경우 대비)
       console.log(userdata)
       state.profile_userid = userdata.id
       state.profile_username= userdata.name
@@ -52,8 +53,7 @@ export default new Vuex.Store({
     //   state.profile_username = filteredUsers.username
     //   state.profile_userfollower = filteredUsers.follower_count
     //   state.profile_userfollowing = filteredUsers.following_count
-
-    // }
+    // },
     SEARCH_KEYWORD(state, data) {
       state.searchlist = data
       console.log(data)
@@ -123,7 +123,7 @@ export default new Vuex.Store({
     //       console.log(err)          
     //     })
     // }
-    profile(context, payload){ // 로그인한 사람이 내 프로필 볼때 받아올 프로필 정보
+    profile(context, payload){ // 내가 내 프로필 볼때 받아올 프로필 정보
       const username = payload.username
 
       axios({
