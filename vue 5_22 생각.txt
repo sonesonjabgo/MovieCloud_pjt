@@ -33,3 +33,5 @@ searchbar 크기 조절
 
 서치 리스트 페이지
 무비 세부정보 페이지
+
+nav바 login 시 logout 시 나타나는 화면 바뀌기

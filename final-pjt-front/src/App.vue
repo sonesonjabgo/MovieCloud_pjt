@@ -6,8 +6,8 @@
       <!-- <router-link to="/about">About</router-link> | -->
       <div class="right-links">
         <router-link to="/login">Login</router-link> <br />
-        <router-link to="/signup">Signup</router-link>
-        <router-link to="/profile">Profile</router-link> | 
+        <router-link to="/signup">Signup</router-link> <br />
+        <router-link to="/profile">Profile</router-link> 
       </div>
     </nav>
     <div id="router-view-bg">
