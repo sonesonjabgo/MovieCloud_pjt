@@ -81,9 +81,9 @@ def search(request, keyword):
 # 좋아요 기능
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
-def likes(request, movie_pk):
+def likes(request, movie_id):
     if request.user.is_authenticated:
-        movie = Movie.objects.get(pk=movie_pk)
+        movie = Movie.objects.get(id=movie_id)
         if movie.like_users.filter(pk=request.user.pk).exists():
             movie.like_users.remove(request.user)
         else:
