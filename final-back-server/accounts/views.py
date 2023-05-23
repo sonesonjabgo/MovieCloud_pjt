@@ -19,6 +19,13 @@ def profile(request, username):
     serializer = FollowSerializer(person)
     return Response(serializer.data)
 
+@api_view(['GET'])
+def user_info(request, user_pk):
+    # username으로 들어가서 이 username을 가진 사용자의 프로필을 보여줌
+    person = get_object_or_404(User, pk=user_pk)
+    serializer = FollowSerializer(person)
+    return Response(serializer.data)
+
 @api_view(['POST'])
 @permission_classes([IsAuthenticated]) # 이게 로그인 한 사용자만 이용할 수 있도록 제한해줌.
 def follow(request, user_pk):

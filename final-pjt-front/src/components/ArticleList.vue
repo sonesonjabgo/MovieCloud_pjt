@@ -1,18 +1,20 @@
 <template>
   <div class="article-list">
     <h3>Article List</h3>
-    <!-- <ArticleListItem 
+    <ArticleListItem 
     v-for="article in articles" :key="article.id" :article="article"
-    /> -->
+    />
   </div>
 </template>
 
 <script>
+import ArticleListItem from '@/components/ArticleListItem'
+
 export default {
     name: 'ArticleList',
-    // components: {
-    //     ArticleListItem,
-    // },
+    components: {
+        ArticleListItem,
+    },
     computed: {
         articles(){
             return this.$store.state.articles

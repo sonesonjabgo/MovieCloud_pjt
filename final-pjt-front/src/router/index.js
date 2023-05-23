@@ -6,7 +6,8 @@ import LoginView from '@/views/LoginView.vue'
 import LogoutView from '@/views/LogoutView.vue'
 import SignUpView from '@/views/SignUpView.vue'
 import ArticleView from '@/views/ArticleView.vue'
-
+import ArticleCreateView from '@/views/CreateArticleView.vue'
+import ArticleDetailView from '@/views/ArticleDetailView.vue'
 import ProfileView from '@/views/ProfileView.vue'
 import SearchListView from '@/views/SearchListView.vue'
 
@@ -54,6 +55,16 @@ const routes = [
     path: '/article',
     name: 'ArticleView',
     component: ArticleView
+  },
+  {
+    path: '/createarticle',
+    name: 'ArticleCreateView',
+    component: ArticleCreateView
+  },
+  {
+    path: '/detailarticle',
+    name: 'ArticleDetailView',
+    component: ArticleDetailView
   },
   {
     path: '/searchlist',

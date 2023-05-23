@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Community</h1>
-    <router-link :to="{ name: 'CreateView' }" v-if="isLogin">[새 글 쓰기]</router-link>
+    <router-link :to="{ name: 'ArticleCreateView' }" v-if="isLogin">[새 글 쓰기]</router-link>
     <ArticleList />
     
   </div>

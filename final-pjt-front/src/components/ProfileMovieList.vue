@@ -17,17 +17,19 @@ export default {
     name: "ProfileMovieList",
     data(){
       return {
-        username: this.$store.state.profile_username
+        username: this.$store.state.profile_username,
+        movies: this.$store.state.like_movies,
       }
     },
     components: {
       ProfileMovieListItem
     },
-    computed: {
-      movies(){
-          return this.$store.state.movies.filter((element)=>{ element.like_users == this.$store.state.profile_userid})
-      }
+    created(){
+      this.$store.dispatch('getLikeMovies')
     },
+    computed: {
+    },
+
     methods: {
     },
     

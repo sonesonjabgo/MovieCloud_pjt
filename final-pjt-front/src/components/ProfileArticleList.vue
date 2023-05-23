@@ -17,18 +17,19 @@ export default {
     name: "ProfileArticleList",
     data(){
       return {
-        username: this.$store.state.profile_username
+        username: this.$store.state.profile_username,
+        articles: this.$store.state.wrote_articles,
       }
     },
     components: {
       ProfileArticleListItem
     },
     computed: {
-      articles(){
-          return this.$store.state.articles.filter((element)=>{ element.user == this.$store.state.profile_userid})
-      }
     },
     methods: {
+    },
+    created(){
+      this.$store.dispatch('getWroteArticles')
     },
     
 }
