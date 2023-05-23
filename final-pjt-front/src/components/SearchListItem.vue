@@ -22,6 +22,7 @@ export default {
   methods: {
     divClick() {
       this.$store.dispatch("pickedMovie", this.search.id);
+      this.$router.push({ name: 'movieDetail' })
     },
   },
 };

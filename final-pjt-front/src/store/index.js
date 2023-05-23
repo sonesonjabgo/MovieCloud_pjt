@@ -89,7 +89,7 @@ export default new Vuex.Store({
     },
     PICK_MOVIE(state, data) {
       state.movie_detail_data = data
-      router.push({ name: 'movieDetail' })
+      
     },
     FOLLOW(state, data) {
       state.profile_userfollower = data.follower_count
@@ -168,19 +168,19 @@ export default new Vuex.Store({
           console.log(err)
         })
     },
-    getUsers(context) {
-      axios({
-        method: 'get',
-        url: `${API_URL}/accounts/users/`,
-      })
-        .then((res) => {
-          // console.log(res, context)
-          context.commit('GET_USERS', res.data)
-        })
-        .catch((err) => {
-          console.log(err)
-        })
-    },
+    // getUsers(context) {
+    //   axios({
+    //     method: 'get',
+    //     url: `${API_URL}/accounts/users/`,
+    //   })
+    //     .then((res) => {
+    //       // console.log(res, context)
+    //       context.commit('GET_USERS', res.data)
+    //     })
+    //     .catch((err) => {
+    //       console.log(err)
+    //     })
+    // },
     getArticles(context) {
       axios({
         method: 'get',
