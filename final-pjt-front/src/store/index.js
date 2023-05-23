@@ -36,7 +36,13 @@ export default new Vuex.Store({
   },
   mutations: {
     // signup, login 완료하면 토큰 발급, login한 username 저장
-    SAVE_TOKEN(state, dataArray) {
+    // SAVE_TOKEN_1(state, dataArray) { // sign up 했을 때 토큰 저장
+    //   console.log(dataArray)
+    //   state.token = dataArray
+
+    //   router.push({ name: 'home' })
+    // },
+    SAVE_TOKEN(state, dataArray) { // login 했을 때 토큰 저장
       console.log(dataArray)
       state.token = dataArray[0]
       state.login_username = dataArray[1]
@@ -95,7 +101,8 @@ export default new Vuex.Store({
         }
       })
         .then((res) => {
-          context.commit('SAVE_TOKEN', res.data.key)
+
+          context.commit('SAVE_TOKEN', [res.data.key, username])
         })
         .catch((err) => {
           console.log(err)
@@ -113,6 +120,7 @@ export default new Vuex.Store({
         }
       })
         .then((res) => {
+
           context.commit('SAVE_TOKEN', [res.data.key, username])
           // context.commit('GET_LOGIN_USER', res.data)
         })
