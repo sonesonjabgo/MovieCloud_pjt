@@ -1,0 +1,18 @@
+프로필 워드클라우드 생성 로직
+
+-user에 로그인하면 .. user_id가 있다.
+-movies_movie_like_users에 user_id가 같은 값을 갖고있는 객체를 가져온다
+-그 객체들의 movie_id와 movies_movie의 id와 같은 movie들의 overview를 한 리스트에 담는다
+
+현재 단비님이 state에 like_movies에 계정 간 좋아요 누른 movies 정보 들어있음
+- 이거 활용하기
+
+
+
+-리스트에 담긴 문자열들을 빈도분석 및 워드클라우드 화 한다.
+
+
+
+
+데이터 전달 방식.....
+프로필 링크 클릭 > 

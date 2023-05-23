@@ -1,0 +1,9 @@
+asgiref==3.5.2
+Django==3.2.13
+django-cors-headers==3.14.0
+djangorestframework==3.14.0
+JPype1==1.4.1
+packaging==23.1
+pytz==2022.6
+rhinoMorph==4.0.1.11
+sqlparse==0.4.3
