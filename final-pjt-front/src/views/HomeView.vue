@@ -70,7 +70,7 @@ export default {
     this.getHighList()
     this.getMovies()
     this.getArticles()
-    this.getUsers()
+    // this.getUsers()
   },
   methods: {
     getTopList() {
@@ -108,9 +108,9 @@ export default {
     getArticles(){
       this.$store.dispatch('getArticles')
     },
-    getUsers(){
-      this.$store.dispatch('getUsers')
-    },
+    // getUsers(){
+    //   this.$store.dispatch('getUsers')
+    // },
   },
 };
 </script>

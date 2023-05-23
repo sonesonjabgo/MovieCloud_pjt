@@ -10,5 +10,5 @@ urlpatterns = [
     path('top_rated/', views.top_rated_list),
     path('popularity/', views.popularity_list),
     path('search/<str:keyword>/', views.search),
-    path('likes/<str:movie_id>/', views.likes),
+    path('likes/<int:movie_id>/', views.likes),
 ]

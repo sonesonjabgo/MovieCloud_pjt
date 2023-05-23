@@ -88,3 +88,5 @@ def likes(request, movie_id):
             movie.like_users.remove(request.user)
         else:
             movie.like_users.add(request.user)
+        return Response({'result':'success'})
+    return Response({'result':'login_required'})

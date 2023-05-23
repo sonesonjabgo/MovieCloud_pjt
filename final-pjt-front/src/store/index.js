@@ -34,6 +34,9 @@ export default new Vuex.Store({
     isLogin(state) {
       return state.token ? true : false
     },
+    // pickedTitle(state){
+    //   return state.movie_detail_data.title
+    // }
   },
   mutations: {
     // signup, login 완료하면 토큰 발급, login한 username 저장
@@ -84,7 +87,7 @@ export default new Vuex.Store({
     },
     PICK_MOVIE(state, data) {
       state.movie_detail_data = data
-      router.push({ name: 'movieDetail' })
+      
     },
     FOLLOW(state, data) {
       state.profile_userfollower = data.follower_count
@@ -160,19 +163,19 @@ export default new Vuex.Store({
           console.log(err)
         })
     },
-    getUsers(context) {
-      axios({
-        method: 'get',
-        url: `${API_URL}/accounts/users/`,
-      })
-        .then((res) => {
-          // console.log(res, context)
-          context.commit('GET_USERS', res.data)
-        })
-        .catch((err) => {
-          console.log(err)
-        })
-    },
+    // getUsers(context) {
+    //   axios({
+    //     method: 'get',
+    //     url: `${API_URL}/accounts/users/`,
+    //   })
+    //     .then((res) => {
+    //       // console.log(res, context)
+    //       context.commit('GET_USERS', res.data)
+    //     })
+    //     .catch((err) => {
+    //       console.log(err)
+    //     })
+    // },
     getArticles(context) {
       axios({
         method: 'get',

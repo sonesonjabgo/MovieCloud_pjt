@@ -23,6 +23,8 @@ export default {
   methods: {
     imageClick() {
       this.$store.dispatch("pickedMovie", this.topmovie.id);
+      this.$router.push({ name: 'movieDetail' })
+      
     },
   },
 };

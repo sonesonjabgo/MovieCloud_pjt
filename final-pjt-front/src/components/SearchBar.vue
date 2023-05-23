@@ -39,13 +39,16 @@ export default {
         })
         .then((res)=>{
           this.$store.dispatch('searchKeyword', res.data)
-          this.$router.push({name: 'SearchListView'})
+          if(this.$route.path !== this.$router.resolve({name: 'SearchListView'}).href){
+            this.$router.push({name: 'SearchListView'})
+          }
         })
         .catch((err)=>{
           console.log(err)
         })
       }
-    }
+    },
+    
 }
 </script>
 
