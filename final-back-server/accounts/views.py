@@ -37,8 +37,4 @@ def follow(request, user_pk):
         serializer = FollowSerializer(person)
     return Response(serializer.data)
 
-@api_view(['GET'])
-def user_list(request):
-    users = User.objects.all()
-    serializer = FollowSerializer(users, many=True)
-    return Response(serializer.data)
+

@@ -5,6 +5,7 @@ import HomeView from '../views/HomeView.vue'
 import LoginView from '@/views/LoginView.vue'
 import LogoutView from '@/views/LogoutView.vue'
 import SignUpView from '@/views/SignUpView.vue'
+import ArticleView from '@/views/ArticleView.vue'
 
 import ProfileView from '@/views/ProfileView.vue'
 import SearchListView from '@/views/SearchListView.vue'
@@ -48,6 +49,11 @@ const routes = [
     path: '/profile',
     name: 'ProfileView',
     component: ProfileView
+  },
+  {
+    path: '/article',
+    name: 'ArticleView',
+    component: ArticleView
   },
   {
     path: '/searchlist',

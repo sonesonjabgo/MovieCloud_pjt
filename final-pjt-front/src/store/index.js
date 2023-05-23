@@ -16,7 +16,7 @@ export default new Vuex.Store({
   ],
   state: {
     token: null,
-    movies: [],
+    like_movies: [],
     users: [],
     articles: [],
     login_username: null,
@@ -24,6 +24,7 @@ export default new Vuex.Store({
     profile_userid: null,
     profile_userfollower: null,
     profile_userfollowing: null,
+    profile_following_list: null,
     searchlist: null,
     movie_detail_data: null,
   },
@@ -33,6 +34,9 @@ export default new Vuex.Store({
     },
     isLogin(state) {
       return state.token ? true : false
+    },
+    isFollowing(state) {
+      return  state.profile_following_list.includes(state.profile_userid) ? true : false
     },
   },
   mutations: {
@@ -50,8 +54,9 @@ export default new Vuex.Store({
       state.profile_username = dataArray[1]
       router.push({ name: 'home' })
     },
-    GET_MOVIES(state, movies) {
-      state.movies = movies
+    GET_LIKE_MOVIES(state, movies) {
+      const like_movies = movies.filter((element)=>{ element.like_users == this.$store.state.profile_userid})
+      state.like_movies = like_movies
     },
     DELETE_TOKEN(state) {
       state.token = null
@@ -89,6 +94,7 @@ export default new Vuex.Store({
     FOLLOW(state, data) {
       state.profile_userfollower = data.follower_count
       state.profile_userfollowing = data.following_count
+      state.profile_following_list = data.followings
     },
   },
   actions: {
@@ -124,7 +130,9 @@ export default new Vuex.Store({
         }
       })
         .then((res) => {
-
+          console.log(res)
+          console.log('--------------------------------')
+          console.log(res.data)
           context.commit('SAVE_TOKEN', [res.data.key, username])
           // context.commit('GET_LOGIN_USER', res.data)
         })
@@ -147,14 +155,14 @@ export default new Vuex.Store({
         console.log(err)
       })
     },
-    getMovies(context) {
+    getLikeMovies(context) {
       axios({
         method: 'get',
         url: `${API_URL}/movies/list/`,
       })
         .then((res) => {
           // console.log(res, context)
-          context.commit('GET_MOVIES', res.data)
+          context.commit('GET_LIKE_MOVIES', res.data)
         })
         .catch((err) => {
           console.log(err)
@@ -194,7 +202,7 @@ export default new Vuex.Store({
         url: `${API_URL}/accounts/${username}/`,
       })
         .then((res) => {
-          // console.log(res.data)
+          console.log(res.data)
           context.commit('SET_PROFILE', res.data)
         })
         .catch((err) => {
@@ -233,8 +241,8 @@ export default new Vuex.Store({
         }
       })
         .then((res) => {
+          // console.log(res.data)
           context.commit('FOLLOW', res.data)
-          // context.commit('GET_LOGIN_USER', res.data)
         })
         .catch((err) => {
           console.log(err)

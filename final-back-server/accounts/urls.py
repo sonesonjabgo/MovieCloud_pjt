@@ -7,7 +7,6 @@ urlpatterns = [
     path('signup/', include('dj_rest_auth.registration.urls')),
     path('<str:username>/', views.profile),
     path('<int:user_pk>/follow/', views.follow),
-    path('users/', views.user_list),
 
 ]
 

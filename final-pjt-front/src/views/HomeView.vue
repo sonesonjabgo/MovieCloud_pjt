@@ -102,8 +102,8 @@ export default {
           console.log(err)
         })
     },
-    getMovies(){
-      this.$store.dispatch('getMovies')
+    getLikeMovies(){
+      this.$store.dispatch('getLikeMovies')
     },
     getArticles(){
       this.$store.dispatch('getArticles')
