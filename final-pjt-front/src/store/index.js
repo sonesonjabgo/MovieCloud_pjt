@@ -4,6 +4,7 @@ import Vuex from 'vuex'
 import axios from 'axios'
 import createPersistedState from 'vuex-persistedstate'
 import router from '../router' // store/index.js 에서는 $router 접근 불가 -> import 해야 됨
+// import { RouterLink } from 'vue-router'
 
 const API_URL = 'http://127.0.0.1:8000'
 
@@ -36,7 +37,13 @@ export default new Vuex.Store({
   },
   mutations: {
     // signup, login 완료하면 토큰 발급, login한 username 저장
-    SAVE_TOKEN(state, dataArray) {
+    // SAVE_TOKEN_1(state, dataArray) { // sign up 했을 때 토큰 저장
+    //   console.log(dataArray)
+    //   state.token = dataArray
+
+    //   router.push({ name: 'home' })
+    // },
+    SAVE_TOKEN(state, dataArray) { // login 했을 때 토큰 저장
       console.log(dataArray)
       state.token = dataArray[0]
       state.login_username = dataArray[1]
@@ -46,14 +53,17 @@ export default new Vuex.Store({
     GET_MOVIES(state, movies) {
       state.movies = movies
     },
-    LOGOUT(state) {
+    DELETE_TOKEN(state) {
       state.token = null
       state.login_username = null
       state.profile_username = null
       state.profile_userid = null
       state.profile_userfollower = null
       state.profile_userfollowing = null
+
+      router.push({name: "home"})
     },
+
     GET_USERS(state, users) {
       state.users = users
     },
@@ -95,7 +105,8 @@ export default new Vuex.Store({
         }
       })
         .then((res) => {
-          context.commit('SAVE_TOKEN', res.data.key)
+
+          context.commit('SAVE_TOKEN', [res.data.key, username])
         })
         .catch((err) => {
           console.log(err)
@@ -113,6 +124,7 @@ export default new Vuex.Store({
         }
       })
         .then((res) => {
+
           context.commit('SAVE_TOKEN', [res.data.key, username])
           // context.commit('GET_LOGIN_USER', res.data)
         })
@@ -121,7 +133,19 @@ export default new Vuex.Store({
         })
     },
     logout(context) {
-      context.commit('LOGOUT')
+      axios({
+        method: "post",
+        url: `${API_URL}/accounts/logout/`,
+        headers: {
+          Authorization: `Token ${context.state.token}`
+        },
+      })
+      .then(()=>{
+        context.commit('DELETE_TOKEN')
+      })
+      .catch((err) => {
+        console.log(err)
+      })
     },
     getMovies(context) {
       axios({
