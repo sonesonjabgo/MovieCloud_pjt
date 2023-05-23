@@ -18,6 +18,7 @@
 </template>
 
 <script>
+
 export default {
     name: 'LogInview',
     data(){
@@ -37,7 +38,33 @@ export default {
             }
 
             this.$store.dispatch('login', payload)
-        }
+            this.$store.dispatch('profile', payload)
+            // this.getUserDetail(username)
+
+        },
+        // getUserDetail(username) {
+        //     axios({
+        //         method: 'get',
+        //         url: `${API_URL}/accounts/${username}/`,
+        //     })
+        //     .then((res) => {
+        //         console.log(res)
+        //         console.log('----------------')
+        //         const username = res.data.username
+        //         const userid = res.data.id
+        //         const following = res.data.following_count
+        //         const follower = res.data.follower_count
+        //         const following_list = res.data.followeings
+        //         const payload = {
+        //             username, userid, following, follower, following_list
+        //         }
+
+        //         this.$store.dispatch('profile', payload)
+        //     })
+        //     .catch((err) => {
+        //         console.log(err)
+        //     })
+        // },
     }
 }
 </script>

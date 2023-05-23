@@ -8,7 +8,8 @@ import SignUpView from '@/views/SignUpView.vue'
 import ArticleView from '@/views/ArticleView.vue'
 import ArticleCreateView from '@/views/CreateArticleView.vue'
 import ArticleDetailView from '@/views/ArticleDetailView.vue'
-import ProfileView from '@/views/ProfileView.vue'
+import MyProfileView from '@/views/MyProfileView.vue'
+import OtherProfileView from '@/views/OtherProfileView.vue'
 import SearchListView from '@/views/SearchListView.vue'
 
 import movieDetail from '../components/movieDetail.vue'
@@ -47,9 +48,14 @@ const routes = [
     component: SignUpView
   },
   {
-    path: '/profile',
-    name: 'ProfileView',
-    component: ProfileView
+    path: '/myprofile',
+    name: 'MyProfileView',
+    component: MyProfileView
+  },
+  {
+    path: '/otherprofile',
+    name: 'OtherProfileView',
+    component: OtherProfileView
   },
   {
     path: '/article',

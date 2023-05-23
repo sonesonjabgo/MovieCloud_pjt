@@ -6,7 +6,8 @@
     <p>내용 : {{ article?.content }}</p>
     <p>작성시간 : {{ article?.created_at }}</p>
     <p>수정시간 : {{ article?.updated_at }}</p><br>
-    <p @click="go_profile">작성자 : {{ article?.user }}</p>
+    <p @click="go_myprofile" v-if="this.$store.getters.login_same">작성자 본인임: {{ article?.user }}</p>
+    <p @click="go_otherprofile" v-if="!this.$store.getters.login_same">작성자 타인임: {{ article?.user }}</p>
   </div>
 </template>
 
@@ -18,17 +19,18 @@ export default {
     name: 'ArticleDetailView',
     data(){
         return {
-            article: null
+            article: null,
+            writer: null,
         }
     },
     created(){
         this.getArticleDetail()
     },
-    computed:{
-        profi() {
-            return this.article.user
-        }
-    },
+    // computed:{
+    //     profi() {
+    //         return this.article.user
+    //     }
+    // },
     methods: {
         getArticleDetail(){
             axios({
@@ -39,6 +41,7 @@ export default {
                 console.log(res)
                 this.article = res.data
                 this.getUserDetail(this.article.user)
+                this.$store.dispatch('get_profile', this.article.user)
             })
             .catch((err) => {
                 console.log(err)
@@ -52,23 +55,27 @@ export default {
             .then((res) => {
                 console.log(res)
                 this.article.user = res.data.username
+                this.writer = res.data.username
             })
             .catch((err) => {
                 console.log(err)
             })
         },
-        go_profile() {
-            axios({
-                method: 'get',
-                url: `${API_URL}/accounts/${this.profi}/`,
-            })
-            .then((res) => {
-                console.log(res)
-                this.$router.push({path: '/ProfileView}'})
-            })
-            .catch((err) => {
-                console.log(err)
-            })
+        go_myprofile() { // 작성자 누르면 프로필로 넘어갈거
+            this.$router.push({name: 'MyProfileView'})
+        },
+        go_otherprofile() { // 작성자 누르면 프로필로 넘어갈거
+            this.$router.push({name: 'OtherProfileView'})
+        },
+        get_writer_profile(){
+            const userid = this.article.id
+            const payload = {
+                userid
+            }
+
+            this.$store.dispatch('get_profile', payload)
+            // this.getUserDetail(username)
+
         },
     }
 }

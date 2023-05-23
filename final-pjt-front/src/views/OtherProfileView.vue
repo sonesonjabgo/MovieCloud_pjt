@@ -1,11 +1,8 @@
 <template>
   <div>
+    <!-- 글 작성자 프로필 보는거 -->
     <h1>profile</h1>
-    <div v-if="login_same_profile">
-        <MyProfile /> <!-- 로그인 한 사람이랑 프로필 페이지 주인이랑 같을 경우 -->
-    </div>
-
-    <div v-if="!login_same_profile">
+    <div>
         <OthersProfile /> <!-- 로그인 한 사람이랑 프로필 페이지 주인이랑 다를 경우 -->
     </div>
     
@@ -19,42 +16,42 @@
         <ProfileArticleList />
     </div>
 
-    <div v-if="login_same_profile">
-        <!-- 워드클라우드 나만 보이게?-->
+    <!-- <div v-if="login_same_profile">
+        워드클라우드는 내 프로필에서만 보이게
         <WordCloud />
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
-import MyProfile from '@/components/MyProfile'
+// import MyProfile from '@/components/MyProfile'
 import OthersProfile from '@/components/OthersProfile'
 import ProfileMovieList from '@/components/ProfileMovieList'
 import ProfileArticleList from '@/components/ProfileArticleList'
-import WordCloud from '@/components/WordCloud'
+// import WordCloud from '@/components/WordCloud'
 
 
 export default {
-    name:'ProfileView',
+    name:'OtherProfileView',
     data(){
         return{
-            login_username: this.$store.state.login_username,
-            profile_username: this.$store.state.profile_username,
+            // login_username: this.$store.state.login_username,
+            // profile_username: this.$store.state.profile_username,
         }
     },
     components:{
-        MyProfile,
+        // MyProfile,
         OthersProfile,
         ProfileMovieList,
         ProfileArticleList,
-        WordCloud,
+        // WordCloud,
         
     },
-    computed:{
-        login_same_profile(){
-            return this.$store.getters.login_same
-        }
-    },
+    // computed:{
+    //     login_same_profile(){
+    //         return this.$store.getters.login_same
+    //     }
+    // },
     
 
 }

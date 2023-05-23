@@ -1,0 +1,22 @@
+router로 컴포넌트 변경하면 django에서 redirect 하듯이 못하니까
+store.state 정보를 바꿔놓자.
+그래서 일단 다른 사람 프로필 들어가는 경우는 community의 작성자를 클릭하는 방법 밖에 없음.
+그래서 community의 detail 페이지에 들어가면 거기에 있는 작성자 정보를 store의 state에 있는
+profile_username, profile_userid, profile_userfollower, profile_userfollowing, profile_following_list에 넣어놓음.
+그리고 그 상태에서 작성자 이름 누르면 router-link로 profile 페이지로 넘어가는데 데이터는 그 작성자꺼로 들어가있으니까 될 듯
+내 프로필 보는거랑 다른 사람 프로필 보는거랑 정보가 다르게 전달되어야 하는데 복잡할 거 같으니까 nav bar에서 profile 눌렀을 때 router랑
+작성자 눌렀을 때 router 다르게 주고 대신 페이지는 view 똑같이 써야겠다.
+
+내 프로필 볼 때는 login_ 데이터들 넣고, 이거는 로그인 할 때 state에 다 넣어줌
+
+다른 사람 프로필 볼 때는 profile_데이터들 넣고, 이거는 article 상세페이지 볼 때 state에 다 넣어줌
+
+근데 내가 작성자 내꺼 눌러서 볼 때는 어떡할거냐.
+article 상세 페이지에서 router-link 연결된 작성자 2개 만들어 놓고 v-if 먹여서 login_ 이랑 profile_ 이랑 같으면 store.getters에 same_user true줘서 그러면 내 프로필 보여주는 router로 주고 v-if 반대꺼는 다른 사람 프로필 보여주는 router 주기.
+
+
+-----------------------------------------------
+추가로 수정해야할거
+MyProfileView.vue created 될 때는 commit 요청 보내서 profile_ 데이터 다 null로 바꿔야할듯
+
+팔로우 기능 수정해야하고, 프로필에서 article 리스트 받아오게 해야하고, 데이터 바뀌면 바로바로 처리할 수 있도록 재형님이 mm보내주신 코드 그거 참고해서 component 마다 변경

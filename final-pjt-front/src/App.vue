@@ -6,7 +6,7 @@
       <div v-if="isLogin" class="right-links"> <!-- login 했으면 profile, logout만 -->
         <router-link to="/article">Community</router-link> <br />
         <router-link to="/logout">Logout</router-link> <br />
-        <router-link to="/profile">Profile</router-link> <br />
+        <router-link to="/myprofile">Profile</router-link> <br />
       </div>
       <div v-if="!isLogin" class="right-links"> <!-- login 안 했으면 login, signup만 -->
         <router-link to="/article">Community</router-link> <br />
