@@ -2,9 +2,9 @@
     <div>
         <h1>Logout</h1>
         <h3>{{username}}님 로그아웃 하시겠습니까?</h3>
-        <!-- <form @submit.prevent="logout">
+        <form @submit.prevent="logout">
             <input type="submit" value="LOGOUT">
-        </form> -->
+        </form>
     </div>
   
 </template>
@@ -19,13 +19,11 @@ export default {
             // first_name: null,
         }
     },
-    // methods:{
-    //     logout(){
-    //       console.log(localStorage.getItem('token'))
-    //       localStorage.removeItem('vuex')
-    //       this.$router.push('/')
-    //     }
-    // }
+    methods:{
+        logout(){
+            this.$store.dispatch('logout')
+        }
+    }
 }
 </script>
 
