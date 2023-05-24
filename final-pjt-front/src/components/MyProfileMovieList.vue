@@ -26,9 +26,9 @@ export default {
     components: {
       ProfileMovieListItem
     },
-    created(){
-      this.$store.dispatch('getMyLikeMovies')
-    },
+    // created(){
+    //   this.$store.dispatch('getMyLikeMovies')
+    // },
     computed: {
       ...mapState({
             movies : state => state.like_movies,

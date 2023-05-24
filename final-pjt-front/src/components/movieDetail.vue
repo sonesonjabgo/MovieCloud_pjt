@@ -48,8 +48,8 @@ export default {
           // 여기에 store pickedMovie 실행하게 하고
           // watch로 state 의 movie_detail_data 좋아요 확인하게 함
           this.$store.dispatch("pickedMovie", this.movie_detail_data.id);
-          this.$store.dispatch("profile", this.$store.state.login_username);
-
+          // this.$store.dispatch("profile", this.$store.state.login_username);
+          this.$store.dispatch('getMyLikeMovies')
         })
         .catch((err) => {
           console.log(err);
