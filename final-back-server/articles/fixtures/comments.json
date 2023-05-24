@@ -1,0 +1,182 @@
+[
+{
+    "model": "articles.comment",
+    "pk": 1,
+    "fields": {
+        "article": "1",
+        "user": "2",
+        "content": "갓재형님이 만드심"
+    }
+},
+{
+    "model": "articles.comment",
+    "pk": 2,
+    "fields": {
+        "article": "1",
+        "user": "4",
+        "content": "워드 클라우드 미쳤다..."
+    }
+},
+{
+    "model": "articles.comment",
+    "pk": 3,
+    "fields": {
+        "article": "2",
+        "user": "2",
+        "content": "프로젝트 쉽지 않다"
+    }
+},
+{
+    "model": "articles.comment",
+    "pk": 4,
+    "fields": {
+        "article": "3",
+        "user": "6",
+        "content": "마라탕이랑 주꾸미임"
+    }
+},
+{
+    "model": "articles.comment",
+    "pk": 5,
+    "fields": {
+        "article": "4",
+        "user": "1",
+        "content": "재미 없으면 가만 안둠"
+    }
+},
+{
+    "model": "articles.comment",
+    "pk": 6,
+    "fields": {
+        "article": "4",
+        "user": "3",
+        "content": "진짜 재미있음 꼭보셈"
+    }
+},
+{
+    "model": "articles.comment",
+    "pk": 7,
+    "fields": {
+        "article": "7",
+        "user": "2",
+        "content": "교수님 사랑합니다"
+    }
+},
+{
+    "model": "articles.comment",
+    "pk": 8,
+    "fields": {
+        "article": "9",
+        "user": "2",
+        "content": "난 이미 루비임ㅋ"
+    }
+},
+{
+    "model": "articles.comment",
+    "pk": 9,
+    "fields": {
+        "article": "11",
+        "user": "4",
+        "content": "극한직업 보셈"
+    }
+},
+{
+    "model": "articles.comment",
+    "pk": 10,
+    "fields": {
+        "article": "13",
+        "user": "6",
+        "content": "명곡 ㅇㅈ"
+    }
+},
+{
+    "model": "articles.comment",
+    "pk": 11,
+    "fields": {
+        "article": "15",
+        "user": "3",
+        "content": "잠은 죽어서 자는거임"
+    }
+},
+{
+    "model": "articles.comment",
+    "pk": 12,
+    "fields": {
+        "article": "14",
+        "user": "2",
+        "content": "이미 집에 있지만 집에 가고 싶음"
+    }
+},
+{
+    "model": "articles.comment",
+    "pk": 13,
+    "fields": {
+        "article": "12",
+        "user": "1",
+        "content": "아메리카노 한잔 ㄱㄱ"
+    }
+},
+{
+    "model": "articles.comment",
+    "pk": 14,
+    "fields": {
+        "article": "10",
+        "user": "3",
+        "content": "노놉 콧수염 붙이는거 내가 봄봄"
+    }
+},
+{
+    "model": "articles.comment",
+    "pk": 15,
+    "fields": {
+        "article": "5",
+        "user": "2",
+        "content": "구미 2반이 최고임"
+    }
+},
+{
+    "model": "articles.comment",
+    "pk": 16,
+    "fields": {
+        "article": "5",
+        "user": "7",
+        "content": "구미에서는 구미 2반이 최고, 전국에서는 구미 2반이 최고"
+    }
+},
+{
+    "model": "articles.comment",
+    "pk": 17,
+    "fields": {
+        "article": "4",
+        "user": "6",
+        "content": "노노 재미 없음"
+    }
+},
+{
+    "model": "articles.comment",
+    "pk": 18,
+    "fields": {
+        "article": "9",
+        "user": "2",
+        "content": "백준 본명 사실 백백준임"
+    }
+},
+{
+    "model": "articles.comment",
+    "pk": 19,
+    "fields": {
+        "article": "11",
+        "user": "2",
+        "content": "고렇다면 바로 movie cloud 검색창에 검색 ㄱ"
+    }
+},
+{
+    "model": "articles.comment",
+    "pk": 20,
+    "fields": {
+        "article": "14",
+        "user": "4",
+        "content": "나도"
+    }
+}
+]

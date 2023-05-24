@@ -36,8 +36,8 @@ export default {
     },
     computed:{
         ...mapState({
-            following : state => state.profile_userfollowing,
-            follower : state => state.profile_userfollower,
+            following : state => state.login_userfollowing,
+            follower : state => state.login_userfollower,
         }),
         
     },

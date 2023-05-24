@@ -31,6 +31,9 @@ export default {
       movies: (state) => state.like_movies,
     }),
   },
+  created(){
+    this.$store.dispatch('getMyLikeMovies')
+  },
   methods: {},
 };
 </script>

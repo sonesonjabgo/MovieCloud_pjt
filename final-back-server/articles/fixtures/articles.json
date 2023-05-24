@@ -1,0 +1,167 @@
+[
+{
+    "model": "articles.article",
+    "pk": 1,
+    "fields": {
+        "title": "Movie cloud 만든사람 누구임?",
+        "content": "진짜 상줘야됨",
+        "created_at": "1995-01-20T07:27:13Z",
+        "updated_at": "1990-04-21T01:07:51Z",
+        "user": 3
+    }
+},
+{
+    "model": "articles.article",
+    "pk": 2,
+    "fields": {
+        "title": "집 가고 싶다.",
+        "content": "프로젝트 힘들어요",
+        "created_at": "1995-01-20T07:27:13Z",
+        "updated_at": "1990-04-21T01:07:51Z",
+        "user": 7
+    }
+},
+{
+    "model": "articles.article",
+    "pk": 3,
+    "fields": {
+        "title": "이거 안보면 후회함",
+        "content": "오늘 싸피 점심 뭐임?",
+        "created_at": "1995-01-20T07:27:13Z",
+        "updated_at": "1990-04-21T01:07:51Z",
+        "user": 2
+    }
+},
+{
+    "model": "articles.article",
+    "pk": 4,
+    "fields": {
+        "title": "슈퍼마리오",
+        "content": "진짜 개꿀잼",
+        "created_at": "1995-01-20T07:27:13Z",
+        "updated_at": "1990-04-21T01:07:51Z",
+        "user": 2
+    }
+},
+{
+    "model": "articles.article",
+    "pk": 5,
+    "fields": {
+        "title": "구미 2반",
+        "content": "화이팅",
+        "created_at": "1995-01-20T07:27:13Z",
+        "updated_at": "1990-04-21T01:07:51Z",
+        "user": 1
+    }
+},
+{
+    "model": "articles.article",
+    "pk": 6,
+    "fields": {
+        "title": "셔틀버스",
+        "content": "아침에 제발 시간 맞춰서 제발 와주세요",
+        "created_at": "1995-01-20T07:27:13Z",
+        "updated_at": "1990-04-21T01:07:51Z",
+        "user": 3
+    }
+},
+{
+    "model": "articles.article",
+    "pk": 7,
+    "fields": {
+        "title": "임창목 교수님",
+        "content": "교수님이 최고입니다!!",
+        "created_at": "1995-01-20T07:27:13Z",
+        "updated_at": "1990-04-21T01:07:51Z",
+        "user": 3
+    }
+},
+{
+    "model": "articles.article",
+    "pk": 8,
+    "fields": {
+        "title": "아 잠온다",
+        "content": "프로젝트 하다가 수명이 줄어들거같아요",
+        "created_at": "1995-01-20T07:27:13Z",
+        "updated_at": "1990-04-21T01:07:51Z",
+        "user": 6
+    }
+},
+{
+    "model": "articles.article",
+    "pk": 9,
+    "fields": {
+        "title": "백준",
+        "content": "골드 달고 싶어요",
+        "created_at": "1995-01-20T07:27:13Z",
+        "updated_at": "1990-04-21T01:07:51Z",
+        "user": 4
+    }
+},
+{
+    "model": "articles.article",
+    "pk": 10,
+    "fields": {
+        "title": "슈퍼마리오",
+        "content": "콧수염 진짜일까?",
+        "created_at": "1995-01-20T07:27:13Z",
+        "updated_at": "1990-04-21T01:07:51Z",
+        "user": 2
+    }
+},
+{
+    "model": "articles.article",
+    "pk": 11,
+    "fields": {
+        "title": "영화 추천 좀",
+        "content": "코미디 영화 추천해주세요",
+        "created_at": "1995-01-20T07:27:13Z",
+        "updated_at": "1990-04-21T01:07:51Z",
+        "user": 1
+    }
+},
+{
+    "model": "articles.article",
+    "pk": 12,
+    "fields": {
+        "title": "오늘 저녁",
+        "content": "메뉴 추천 부탁",
+        "created_at": "1995-01-20T07:27:13Z",
+        "updated_at": "1990-04-21T01:07:51Z",
+        "user": 3
+    }
+},
+{
+    "model": "articles.article",
+    "pk": 13,
+    "fields": {
+        "title": "노래 추천 해드림",
+        "content": "윤하의 샷건의 집현전 최고임",
+        "created_at": "1995-01-20T07:27:13Z",
+        "updated_at": "1990-04-21T01:07:51Z",
+        "user": 7
+    }
+},
+{
+    "model": "articles.article",
+    "pk": 14,
+    "fields": {
+        "title": "집",
+        "content": "가고 싶다",
+        "created_at": "1995-01-20T07:27:13Z",
+        "updated_at": "1990-04-21T01:07:51Z",
+        "user": 5
+    }
+},
+{
+    "model": "articles.article",
+    "pk": 15,
+    "fields": {
+        "title": "잠",
+        "content": "온다",
+        "created_at": "1995-01-20T07:27:13Z",
+        "updated_at": "1990-04-21T01:07:51Z",
+        "user": 5
+    }
+}
+]
