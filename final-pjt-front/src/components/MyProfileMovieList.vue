@@ -30,12 +30,6 @@ export default {
       this.$store.dispatch('getMyLikeMovies')
     },
     computed: {
-      like_movies_overview() {
-        let my_overview = this.movies.map(function(el){
-          return el.overview
-        })
-        return my_overview
-      },
       ...mapState({
             movies : state => state.like_movies,
             // follower : state => state.profile_userfollower,

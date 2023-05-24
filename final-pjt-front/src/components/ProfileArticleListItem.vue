@@ -1,25 +1,24 @@
 <template>
-    <div>
-        <h3 @click="imageClick">{{article.title}}</h3><hr>
-    </div>
-  </template>
+  <div>
+    <h3 @click="imageClick">{{ article.title }}</h3>
+    <hr />
+  </div>
+</template>
   
   <script>
-  export default {
-      name : 'ProfileArticleItem',
-      props:{
-          article : Object,
-      },
-      methods: {
+export default {
+  name: "ProfileArticleItem",
+  props: {
+    article: Object,
+  },
+  methods: {
     imageClick() {
       this.$store.dispatch("pickedAritlce", this.article.id);
-      this.$router.push({ name: 'ArticleDetailView' })
+      this.$router.push({ name: "ArticleDetailView" });
     },
   },
-  
-  }
-  </script>
+};
+</script>
   
   <style>
-  
-  </style>
+</style>

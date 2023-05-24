@@ -61,7 +61,7 @@ export default {
         url: API_URL,
         params: {
           method: "get",
-          key: "AIzaSyBY6zkgVx58n4PnMs5YXCt03M2L2LJtBzI",
+          key: "AIzaSyCz9GxLsV2bVeTbsl00Z53l27f-cGO89jA",
           part: "snippet",
           type: "video",
           q: keyword + "예고편",

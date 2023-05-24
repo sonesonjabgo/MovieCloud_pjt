@@ -24,6 +24,9 @@ export default {
       return this.$store.state.searchlist
     }
   },
+  created () {
+    window.scrollTo(0, 0);
+  }
   // created() {
   //   // state에서 search data 받아와서 search list item 으로 넘겨주기
   // }

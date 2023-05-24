@@ -93,6 +93,7 @@ def likes(request, movie_id):
         return Response({'result':'success'})
     return Response({'result':'login_required'})
 
+# 형태소 분석
 @api_view(['GET','POST'])
 # @permission_classes([IsAuthenticated])
 def movieCloud(request):

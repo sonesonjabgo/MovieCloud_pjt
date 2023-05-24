@@ -2,7 +2,7 @@
   <div>
     <h1>워드 클라우드로 영화 추천받기</h1>
     <p>워드 클라우드는 좋아하는 영화를 기반으로 생성됩니다.</p>
-    <p>좋아하는 영화를 많이 추가하세요 !</p>
+    <p>좋아하는 영화를 많이 추가하세요</p>
     <div>
       <div id="chart"></div>
     </div>
@@ -76,6 +76,15 @@ export default {
       });
       return my_overview;
     },
+  },
+  watch : {
+    movies : {
+      deep : true,
+      handler(){
+        console.log('123123')
+        this.get_wordcloud()
+      }
+    }
   },
   created() {
     this.get_wordcloud();
