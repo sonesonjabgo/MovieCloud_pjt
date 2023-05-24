@@ -10,6 +10,7 @@ from rest_framework.permissions import IsAuthenticated
 
 # 전체 articles 조회 및 생성
 @api_view(['GET','POST'])
+@permission_classes([IsAuthenticated])
 def article_list(request):
     if request.method == 'GET':
         articles = Article.objects.all()

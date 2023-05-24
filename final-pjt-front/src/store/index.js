@@ -58,7 +58,16 @@ export default new Vuex.Store({
       // state.profile_username = dataArray[1]
       router.push({ name: 'home' })
     },
-    GET_LIKE_MOVIES(state, movies) {
+    GET_MY_LIKE_MOVIES(state, movies) {
+      // console.log(movies)
+      // // console.log(state.profile_userid)
+      // console.log(movies[0].like_users)
+      // const like_movies = movies.filter((element)=>{ element.like_users.includes(state.profile_userid)})
+      const like_movies = movies.filter((element) => element.like_users.includes(state.login_userid));
+      // console.log(like_movies)
+      state.like_movies = like_movies
+    },
+    GET_OTHER_LIKE_MOVIES(state, movies) {
       // console.log(movies)
       // // console.log(state.profile_userid)
       // console.log(movies[0].like_users)
@@ -67,7 +76,11 @@ export default new Vuex.Store({
       // console.log(like_movies)
       state.like_movies = like_movies
     },
-    GET_WROTE_ARTICLES(state, articles) {
+    GET_MY_WROTE_ARTICLES(state, articles) {
+      const wrote_articles = articles.filter((element)=>{ element.user == state.login_userid})
+      state.wrote_articles = wrote_articles
+    },
+    GET_OTHER_WROTE_ARTICLES(state, articles) {
       const wrote_articles = articles.filter((element)=>{ element.user == state.profile_userid})
       state.wrote_articles = wrote_articles
     },
@@ -192,27 +205,53 @@ export default new Vuex.Store({
         console.log(err)
       })
     },
-    getLikeMovies(context) {
+    getMyLikeMovies(context) {
       axios({
         method: 'get',
         url: `${API_URL}/movies/list/`,
       })
         .then((res) => {
           // console.log(res.data[400])
-          context.commit('GET_LIKE_MOVIES', res.data)
+          context.commit('GET_MY_LIKE_MOVIES', res.data)
         })
         .catch((err) => {
           console.log(err)
         })
     },
-    getWroteArticles(context) {
+    getOtherLikeMovies(context) {
+      axios({
+        method: 'get',
+        url: `${API_URL}/movies/list/`,
+      })
+        .then((res) => {
+          // console.log(res.data[400])
+          context.commit('GET_OTHER_LIKE_MOVIES', res.data)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    },
+    getMyWroteArticles(context) {
       axios({
         method: 'get',
         url: `${API_URL}/articles/list/`,
       })
         .then((res) => {
           console.log(res)
-          context.commit('GET_WROTE_ARTICLES', res.data)
+          context.commit('GET_MY_WROTE_ARTICLES', res.data)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    },
+    getOtherWroteArticles(context) {
+      axios({
+        method: 'get',
+        url: `${API_URL}/articles/list/`,
+      })
+        .then((res) => {
+          console.log(res)
+          context.commit('GET_OTHER_WROTE_ARTICLES', res.data)
         })
         .catch((err) => {
           console.log(err)
@@ -303,12 +342,13 @@ export default new Vuex.Store({
       axios({
         method: 'post',
         url: `${API_URL}/${userid}/follow/`,
+        // headers: {
+        //   Authorization: `Token ${this.$store.state.token}`,
+        // },
         data: {
           userid
         },
-        headers: {
-          Authorization: `Token ${this.$store.state.token}`,
-        },
+        
       })
         .then((res) => {
           console.log(res.data)

@@ -8,12 +8,12 @@
     
     <div>
         <!-- 좋아요 누른 영화  내 프로필이든 다른 사람 프로필이든 공통 -->
-        <ProfileMovieList />
+        <OtherProfileMovieList />
     </div>
 
     <div>
         <!-- 누구누구님이 작성한 글 내 프로필이든 다른 사람 프로필이든 공통-->
-        <ProfileArticleList />
+        <OtherProfileArticleList />
     </div>
 
     <!-- <div v-if="login_same_profile">
@@ -26,8 +26,8 @@
 <script>
 // import MyProfile from '@/components/MyProfile'
 import OthersProfile from '@/components/OthersProfile'
-import ProfileMovieList from '@/components/ProfileMovieList'
-import ProfileArticleList from '@/components/ProfileArticleList'
+import OtherProfileMovieList from '@/components/OtherProfileMovieList'
+import OtherProfileArticleList from '@/components/OtherProfileArticleList'
 // import WordCloud from '@/components/WordCloud'
 
 
@@ -42,8 +42,8 @@ export default {
     components:{
         // MyProfile,
         OthersProfile,
-        ProfileMovieList,
-        ProfileArticleList,
+        OtherProfileMovieList,
+        OtherProfileArticleList,
         // WordCloud,
         
     },

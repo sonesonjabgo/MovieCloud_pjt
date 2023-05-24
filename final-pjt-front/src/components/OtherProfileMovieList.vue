@@ -5,7 +5,6 @@
       <ProfileMovieListItem 
       v-for="movie in movies" :key="movie.id" :movie="movie"
       />
-    <p>overview 모은 거 : {{ like_movies_overview }}</p>
     </div>
     
   </div>
@@ -26,17 +25,11 @@ export default {
       ProfileMovieListItem
     },
     created(){
-      this.$store.dispatch('getLikeMovies')
-      
+      this.$store.dispatch('getOtherLikeMovies')
     },
     computed: {
-      like_movies_overview() {
-        let my_overview = this.movies.map(function(el){
-          return el.overview
-        })
-        return my_overview
-      }
     },
+
     methods: {
     },
     
