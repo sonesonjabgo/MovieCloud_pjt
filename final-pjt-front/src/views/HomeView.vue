@@ -68,8 +68,8 @@ export default {
   created() {
     this.getTopList()
     this.getHighList()
-    this.getMovies()
-    this.getArticles()
+    // this.getLikeMovies()
+    // this.getArticles()
     // this.getUsers()
   },
   methods: {
@@ -102,12 +102,12 @@ export default {
           console.log(err)
         })
     },
-    getLikeMovies(){
-      this.$store.dispatch('getLikeMovies')
-    },
-    getArticles(){
-      this.$store.dispatch('getArticles')
-    },
+    // getLikeMovies(){
+    //   this.$store.dispatch('getLikeMovies')
+    // },
+    // getArticles(){
+    //   this.$store.dispatch('getArticles')
+    // },
     // getUsers(){
     //   this.$store.dispatch('getUsers')
     // },

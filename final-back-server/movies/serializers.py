@@ -19,3 +19,5 @@ class MovieSerializer(serializers.ModelSerializer):
     class Meta:
         model = Movie
         exclude = ['comments_users']
+
+

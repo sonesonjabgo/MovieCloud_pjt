@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3 @click="imageClick">{{ article.title }}</h3>
+    <h3 @click="articleClick">{{ article.title }}</h3>
     <hr />
   </div>
 </template>
@@ -12,9 +12,10 @@ export default {
     article: Object,
   },
   methods: {
-    imageClick() {
+    articleClick() {
+      // console.log(this.article.id)
       this.$store.dispatch("pickedAritlce", this.article.id);
-      this.$router.push({ name: "ArticleDetailView" });
+      this.$router.push({ name: "articleDetail" });
     },
   },
 };

@@ -7,12 +7,14 @@ import LogoutView from '@/views/LogoutView.vue'
 import SignUpView from '@/views/SignUpView.vue'
 import ArticleView from '@/views/ArticleView.vue'
 import ArticleCreateView from '@/views/CreateArticleView.vue'
+import CommentCreateView from '@/views/CreateCommentView.vue'
 import ArticleDetailView from '@/views/ArticleDetailView.vue'
 import MyProfileView from '@/views/MyProfileView.vue'
 import OtherProfileView from '@/views/OtherProfileView.vue'
 import SearchListView from '@/views/SearchListView.vue'
 
 import movieDetail from '../components/movieDetail.vue'
+import articleDetail from '../components/articleDetail.vue'
 
 Vue.use(VueRouter)
 
@@ -26,6 +28,11 @@ const routes = [
     path: '/movieDetail',
     name: 'movieDetail',
     component: movieDetail
+  },
+  {
+    path: '/articleDetail',
+    name: 'articleDetail',
+    component: articleDetail
   },
   // {
   //   path: '/',
@@ -66,6 +73,11 @@ const routes = [
     path: '/createarticle',
     name: 'ArticleCreateView',
     component: ArticleCreateView
+  },
+  {
+    path: '/createcomment/:id',
+    name: 'CommentCreateView',
+    component: CommentCreateView
   },
   {
     path: '/detailarticle',

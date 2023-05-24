@@ -25,14 +25,14 @@ export default {
     methods: {
         profile(){ // 현재 페이지의 user 정보를 state에 profile_user로 다 저장
             const username = this.username
-            const following = this.following
-            const follower = this.follower
+            // const following = this.following
+            // const follower = this.follower
 
-            const payload = {
-                username, following, follower
-            }
+            // const payload = {
+            //     username, following, follower
+            // }
 
-            this.$store.dispatch('profile', payload)
+            this.$store.dispatch('profile', username)
         }
     },
     computed:{

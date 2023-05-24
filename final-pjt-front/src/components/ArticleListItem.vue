@@ -4,7 +4,7 @@
     
     <router-link :to="{
       name: 'ArticleDetailView',
-      params: {id: article.id }}">
+      params: { id: article.id }}">
       <p>{{ article.title }}</p>
     </router-link>
   </div>

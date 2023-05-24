@@ -18,7 +18,13 @@ export default {
     name:'CommentCreateView',
     data(){
         return {
-            content: null, 
+            content: null,
+        }
+    },
+    
+    computed:{
+        articleid(){
+            return this.$route.params.id
         }
     },
     methods: {
@@ -31,8 +37,8 @@ export default {
             }
             axios({
                 method: 'post',
-                url: `${API_URL}/articles/list/`,
-                data: { content },
+                url: `${API_URL}/articles/${this.articleid}/comment/post/`,
+                data: { content, },
                 headers: {
                     Authorization: `Token ${this.$store.state.token}`,
                 },
