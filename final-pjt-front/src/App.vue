@@ -30,6 +30,9 @@ export default {
   },
   mounted() {
     window.addEventListener('scroll', this.handleScroll);
+    window.addEventListener('scroll', this.handleScroll);
+  // 초기에 페이지 로드될 때 높이를 조정
+  this.adjustRouterViewHeight();
   },
   beforeDestroy() {
     window.removeEventListener('scroll', this.handleScroll);
@@ -40,12 +43,17 @@ export default {
     }
   },
   methods: {
+    adjustRouterViewHeight() {
+    const routerViewBg = document.getElementById('router-view-bg');
+    routerViewBg.style.height = `${document.documentElement.scrollHeight}px`;
+  },
     handleScroll() {
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
       const threshold = 1; // 스크롤 위치가 200px 이상일 때 네비게이션 사라짐
 
       this.isNavFixed = scrollTop >= threshold;
       this.isNavHidden = scrollTop >= threshold;
+      this.adjustRouterViewHeight();
     },
 
   },
@@ -55,7 +63,7 @@ export default {
 <style>
 #router-view-bg {
   background-color: #D9D9D9;
-  height: 1850px;
+  /* height: 1850px; */
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

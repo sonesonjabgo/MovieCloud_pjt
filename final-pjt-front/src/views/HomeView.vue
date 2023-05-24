@@ -115,6 +115,11 @@ export default {
 };
 </script>
 <style>
+.home {
+  min-width: 1430px; /* 최소한의 너비로 설정 */
+  min-height: min-content; /* 최소한의 높이로 설정 */
+  margin: 0 auto; /* 가운데 정렬을 위해 margin을 auto로 설정 */
+}
 .welcome_text {
   color: white;
   font-size: 100px;

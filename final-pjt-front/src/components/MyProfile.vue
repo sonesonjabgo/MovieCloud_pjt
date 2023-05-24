@@ -3,7 +3,6 @@
     <h3>{{username}}님 프로필</h3>
     <p>팔로잉 : {{following}}</p>
     <p>팔로워 : {{follower}}</p>
-    <!-- <p>3    10</p> -->
 
 </div>
 </template>
