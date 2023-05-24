@@ -25,7 +25,7 @@ export default {
       ProfileMovieListItem
     },
     created(){
-      this.$store.dispatch('getLikeMovies')
+      this.$store.dispatch('getOtherLikeMovies')
     },
     computed: {
     },

@@ -29,7 +29,7 @@ export default {
     methods: {
     },
     created(){
-      this.$store.dispatch('getWroteArticles')
+      this.$store.dispatch('getOtherWroteArticles')
     },
     
 }

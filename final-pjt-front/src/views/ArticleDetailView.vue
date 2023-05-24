@@ -8,6 +8,7 @@
     <p>수정시간 : {{ article?.updated_at }}</p><br>
     <p @click="go_myprofile" v-if="this.$store.getters.login_same">작성자 본인임: {{ article?.user }}</p>
     <p @click="go_otherprofile" v-if="!this.$store.getters.login_same">작성자 타인임: {{ article?.user }}</p>
+    
   </div>
 </template>
 
