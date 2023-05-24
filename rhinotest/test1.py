@@ -73,15 +73,20 @@ from collections import Counter
 stopwords_ko = ["하다", "있다", "되다", "그", "않다", "없다", "나", "말", "사람", "이", "보다", "한", "때", "년", "같다", "대하다", "일", "이", "생각", "위하다", "때문", "그것", "그러나", "가다", "받다", "그렇다", "알다", "사회", "더", "그녀", "문제", "오다", "그리고", "크다", "속"]
 
 mergedTextList_no_stopwords = [word for word in mergedTextList if not word in stopwords_ko]
+# print(mergedTextList)
+# print('--------------------------------------------')
+# print(mergedTextList_no_stopwords)
 
 # print('불용어 제거 전 길이:', len(mergedTextList))
 # print('불용어 제거 후 길이:', len(mergedTextList_no_stopwords))
 
 wordInfo = Counter(mergedTextList_no_stopwords)
-# print('wordInfo:', wordInfo)
+print('wordInfo:', wordInfo)
 
 linedata = ' '.join(mergedTextList_no_stopwords)
 
+# print('--------------------------------------------')
+# print(linedata)
 
 from wordcloud import WordCloud
 cloud = WordCloud(font_path=font_path, width=800, height=600).generate(linedata)

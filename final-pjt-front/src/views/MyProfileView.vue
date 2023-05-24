@@ -16,7 +16,7 @@
         <MyProfileArticleList />
     </div>
 
-    <div v-if="login_same_profile">
+    <div>
         <!-- 워드클라우드 나만 보이게?-->
         <WordCloud />
     </div>

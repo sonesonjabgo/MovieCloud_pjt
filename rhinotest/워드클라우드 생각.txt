@@ -6,6 +6,15 @@
 
 현재 단비님이 state에 like_movies에 계정 간 좋아요 누른 movies 정보 들어있음
 - 이거 활용하기
+- WordCloud.vue의 like_movies_overview 에 에 overview 전부 모여있음
+- 이것을 백엔드로 보내야 함 >> axios로 보내고
+
+- 현재 백엔드에 받은 데이터를 처리할 코드 없음
+
+
+
+
+
 
 
 

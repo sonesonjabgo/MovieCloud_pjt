@@ -2,21 +2,84 @@
   <div>
     <h1>워드 클라우드로 영화 추천받기</h1>
     <div>
-        <p>단어1</p>
-        <p>단어2</p>
-        <p>단어3</p>
-        <p>단어4</p>
-        <p>단어5</p>
+      <div id="chart"></div>
     </div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
+import anychart from "anychart";
+const API_URL = "http://127.0.0.1:8000";
+
 export default {
-    name: "WordCloud"
-}
+  name: "WordCloud",
+  data() {
+    return {
+      movies: this.$store.state.like_movies,
+    };
+  },
+  methods: {
+    get_wordcloud() {
+      const overviews = this.like_movies_overview;
+      axios({
+        method: "post",
+        url: `${API_URL}/movies/moviecloud/`,
+        data: { overviews },
+        headers: {
+          Authorization: `Token ${this.$store.state.token}`,
+        },
+      })
+        .then((res) => {
+          // console.log(res.data['result'])
+          this.drawChart(res.data['result'])
+        })
+        .catch();
+    },
+    drawChart(input) {
+      anychart.onDocumentReady(() => {
+        // console.log(input)
+        const data = input;
+        const chart = anychart.tagCloud(data); // Use tagCloud chart type
+        chart.container('chart');
+
+        chart.listen('pointClick', (e) => {
+          const word = e.point.get('x'); // 클릭한 단어 가져오기
+          // 클릭한 단어로 원하는 동작 수행
+          this.searchKeyword(word)
+        });
+        chart.draw();
+      });
+    },
+    searchKeyword(keyword) {
+        axios({
+          method: 'get',
+          url: `${API_URL}/movies/search/${keyword}/`,
+        })
+        .then((res)=>{
+          this.$store.dispatch('searchKeyword', res.data)
+          if(this.$route.path !== this.$router.resolve({name: 'SearchListView'}).href){
+            this.$router.push({name: 'SearchListView'})
+          }
+        })
+        .catch((err)=>{
+          console.log(err)
+        })
+      }
+  },
+  computed: {
+    like_movies_overview() {
+      let my_overview = this.movies.map(function (el) {
+        return el.overview;
+      });
+      return my_overview;
+    },
+  },
+  created() {
+    this.get_wordcloud();
+  },
+};
 </script>
 
 <style>
-
 </style>

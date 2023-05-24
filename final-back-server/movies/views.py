@@ -7,6 +7,8 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
 from django.conf import settings
 from django.shortcuts import get_object_or_404
+import rhinoMorph
+from collections import Counter
 
 # 전체 리스트 조회
 @api_view(['GET'])
@@ -90,3 +92,23 @@ def likes(request, movie_id):
             movie.like_users.add(request.user)
         return Response({'result':'success'})
     return Response({'result':'login_required'})
+
+@api_view(['GET','POST'])
+# @permission_classes([IsAuthenticated])
+def movieCloud(request):
+    stopwords_ko = ["하다", "있다", "되다", "그", "않다", "없다", "나", "말", "사람", "이", "보다", "한", "때", "년", "같다", "대하다", "일", "이", "생각", "위하다", "때문", "그것", "그러나", "가다", "받다", "그렇다", "알다", "사회", "더", "그녀", "문제", "오다", "그리고", "크다", "속"]
+    # print(request.data['overviews'])
+    overviews = request.data['overviews']
+    rn = rhinoMorph.startRhino()
+    morphed_data = []
+    for data in overviews:
+        morphed_data_each = rhinoMorph.onlyMorph_list(rn, data, pos=['NNG', 'NNP', 'VV', 'VA', 'XR', 'IC', 'MM', 'MAG', 'MAJ'], eomi= True)
+        # print(morphed_data_each)
+        # joined_data_each = ' '.join(morphed_data_each) # 문자열을 하나로 연결
+        if morphed_data_each: # 내용이 있는 경우만 저장하게 함
+            morphed_data.append(morphed_data_each)
+    morphed_data = sum(morphed_data, [])
+    mergedTextList_no_stopwords = [word for word in morphed_data if not word in stopwords_ko]
+    wordInfo = Counter(mergedTextList_no_stopwords)
+    wordInfo = list(wordInfo.items())
+    return Response({'result':wordInfo})
