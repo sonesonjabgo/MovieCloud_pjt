@@ -10,9 +10,14 @@
     <p @click="go_otherprofile" v-if="!this.$store.getters.login_same">작성자 타인임: {{ article?.user }}</p>
     <hr>
     <!-- 댓글 작성할 수 있는 버튼 만들어주기 -->
-    
+    <router-link :to="{ name: 'CommentCreateView', params: { id: article.id } }">[댓글 작성]</router-link>
 
     <!-- 댓글들 보여주기 -->
+    <h1>댓글</h1>
+    <CommentListItem 
+    v-for="comment in comments" :key="comment.id" :comment="comment"
+    />
+    
     
   </div>
 </template>
@@ -20,6 +25,7 @@
 <script>
 import axios from 'axios'
 const API_URL = 'http://127.0.0.1:8000'
+import CommentListItem from '@/components/CommentListItem'
 
 export default {
     name: 'ArticleDetailView',
@@ -27,16 +33,20 @@ export default {
         return {
             article: null,
             writer: null,
+            comments: null,
         }
     },
     created(){
         this.getArticleDetail()
     },
-    // computed:{
-    //     profi() {
-    //         return this.article.user
-    //     }
-    // },
+    components: {
+        CommentListItem,
+    },
+    computed:{
+        articleid() {
+            return this.$route.params.id
+        }
+    },
     methods: {
         getArticleDetail(){
             axios({
@@ -51,6 +61,9 @@ export default {
                 this.article = res.data
                 this.getUserDetail(this.article.user)
                 this.$store.dispatch('get_profile', this.article.user)
+                this.getCommentList(this.article.id)
+                console.log('-------------------------')
+                console.log(this.article.id)
             })
             .catch((err) => {
                 console.log(err)
@@ -76,16 +89,24 @@ export default {
         go_otherprofile() { // 작성자 누르면 프로필로 넘어갈거
             this.$router.push({name: 'OtherProfileView'})
         },
-        // get_writer_profile(){
-        //     const userid = this.article.id
-        //     const payload = {
-        //         userid
-        //     }
-
-        //     this.$store.dispatch('get_profile', payload)
-        //     // this.getUserDetail(username)
-
-        // },
+        getCommentList(article_pk){
+            axios({
+                method: 'get',
+                url: `${API_URL}/articles/${article_pk}/comment/`,
+                headers: {
+                    Authorization: `Token ${this.$store.state.token}`
+                },
+            })
+            .then((res) => {
+                // console.log('-------------------------')
+                // console.log(res.data)
+                this.comments = res.data
+                // this.$store.dispatch('get_comment', this.article.id)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+        },
     }
 }
 </script>

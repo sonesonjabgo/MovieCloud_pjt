@@ -18,13 +18,15 @@ export default new Vuex.Store({
     token: null,
     like_movies: null,
     wrote_articles: [],
-    users: [],
-    articles: [],
+    // users: [],
+    articles: [], // 전체 게시글
+    article_comments: [], // 각 article의 comment
     login_username: null,
     login_userid: null,
     login_userfollower: null,
     login_userfollowing: null,
     login_following_list: null,
+    login_like_movie: null,
     profile_username: null,
     profile_userid: null,
     profile_userfollower: null,
@@ -89,6 +91,7 @@ export default new Vuex.Store({
     DELETE_TOKEN(state) {
       state.token = null
       state.like_movies = null
+
       state.login_username = null
       state.login_userid = null
       state.login_userfollower = null
@@ -98,16 +101,20 @@ export default new Vuex.Store({
       state.profile_userid = null
       state.profile_userfollower = null
       state.profile_userfollowing = null
+      
 
       router.push({name: "home"})
     },
 
-    GET_USERS(state, users) {
-      state.users = users
-    },
+    // GET_USERS(state, users) {
+    //   state.users = users
+    // },
     GET_ARTICLES(state, articles) { // 전체 게시글 조회
       state.articles = articles
     },
+    // GET_COMMENT(state, comments) { // article에 해당하는 comment 뽑아오기
+    //   state.article_comments = comments
+    // },
     SET_LOGIN_PROFILE(state, userdata) { // 로그인한 이용자 정보 저장
       console.log(userdata)
       state.login_username = userdata.username
@@ -115,6 +122,7 @@ export default new Vuex.Store({
       state.login_userfollower = userdata.follower_count
       state.login_userfollowing = userdata.following_count
       state.login_following_list = userdata.followings
+      state.login_like_movie = userdata.like_movies
 
     },
     SET_WRITER_PROFILE(state, userdata) { // 현재 프로필 페이지의 user 정보 저장 (내가 내 프로필 볼 경우 대비)
@@ -299,15 +307,31 @@ export default new Vuex.Store({
           console.log(err)
         })
     },
-    profile(context, payload) { // 로그인한 사용자 정보 받아오기
-      const username = payload.username
+    // get_comment(context, articleid) { // article에 comment를 보여주기 위한
+    //   axios({
+    //     method: 'get',
+    //     url: `${API_URL}/articles/${articleid}/comment/`,
+    //     headers: {
+    //       Authorization: `Token ${context.state.token}`
+    //     },
+    //   })
+    //     .then((res) => {
+    //       // console.log(res, context)
+    //       context.commit('GET_COMMENT', res.data)
+    //     })
+    //     .catch((err) => {
+    //       console.log(err)
+    //     })
+    // },
+    profile(context, user) { // 로그인한 사용자 정보 받아오기
+      const username = user
 
       axios({
         method: 'get',
         url: `${API_URL}/accounts/${username}/`,
       })
         .then((res) => {
-          // console.log(res)
+          console.log(res)
           context.commit('SET_LOGIN_PROFILE', res.data)
 
 
@@ -357,9 +381,13 @@ export default new Vuex.Store({
     pickedAritlce(context, article_id) {
       axios({
         method: 'get',
-        url: `${API_URL}/articles/${article_id}`,
+        url: `${API_URL}/articles/${article_id}/`,
+        headers: {
+          Authorization: `Token ${context.state.token}`
+        },
       })
         .then((res) => {
+          console.log(res.data)
           context.commit('PICK_ARTICLE', res.data)
         })
         .catch((err) => {
