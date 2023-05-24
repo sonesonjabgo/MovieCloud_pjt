@@ -28,6 +28,7 @@ def article_list(request):
 
 # article 세부 정보 조회, 수정, 삭제
 @api_view(['GET', 'PUT', 'DELETE'])
+@permission_classes([IsAuthenticated])
 def article_detail(request, article_pk):
     article = Article.objects.get(pk=article_pk)
     
@@ -45,6 +46,7 @@ def article_detail(request, article_pk):
     
 # 단일 article의 comment 조회
 @api_view(['GET'])
+@permission_classes([IsAuthenticated])
 def comment_list(request, article_pk):
     article = Article.objects.get(pk=article_pk)
     comments = article.article_comments.all()

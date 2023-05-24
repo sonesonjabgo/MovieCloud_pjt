@@ -77,11 +77,12 @@ export default new Vuex.Store({
       state.like_movies = like_movies
     },
     GET_MY_WROTE_ARTICLES(state, articles) {
-      const wrote_articles = articles.filter((element)=>{ element.user == state.login_userid})
+      console.log(articles)
+      const wrote_articles = articles.filter((element)=> element.user_id == state.login_userid )
       state.wrote_articles = wrote_articles
     },
     GET_OTHER_WROTE_ARTICLES(state, articles) {
-      const wrote_articles = articles.filter((element)=>{ element.user == state.profile_userid})
+      const wrote_articles = articles.filter((element)=> element.user_id == state.profile_userid )
       state.wrote_articles = wrote_articles
     },
     DELETE_TOKEN(state) {
@@ -103,7 +104,7 @@ export default new Vuex.Store({
     GET_USERS(state, users) {
       state.users = users
     },
-    GET_ARTICLES(state, articles) {
+    GET_ARTICLES(state, articles) { // 전체 게시글 조회
       state.articles = articles
     },
     SET_LOGIN_PROFILE(state, userdata) { // 로그인한 이용자 정보 저장
@@ -121,7 +122,6 @@ export default new Vuex.Store({
       state.profile_userid = userdata.id
       state.profile_userfollower = userdata.follower_count
       state.profile_userfollowing = userdata.following_count
-      // state.login_following_list = userdata.followings
 
     },
     
@@ -141,10 +141,16 @@ export default new Vuex.Store({
       state.movie_detail_data = data
       
     },
+    // PICK_ARTICLE(state, data) {
+    //   state.movie_detail_data = data
+      
+    // },
     FOLLOW(state, data) {
       state.profile_userfollower = data.follower_count
       state.profile_userfollowing = data.following_count
-      state.profile_following_list = data.followings
+
+      
+      // state.profile_following_list = data.followings
     },
   },
   actions: {
@@ -235,6 +241,9 @@ export default new Vuex.Store({
       axios({
         method: 'get',
         url: `${API_URL}/articles/list/`,
+        headers: {
+          Authorization: `Token ${context.state.token}`
+        },
       })
         .then((res) => {
           console.log(res)
@@ -248,6 +257,9 @@ export default new Vuex.Store({
       axios({
         method: 'get',
         url: `${API_URL}/articles/list/`,
+        headers: {
+          Authorization: `Token ${context.state.token}`
+        },
       })
         .then((res) => {
           console.log(res)
@@ -274,6 +286,9 @@ export default new Vuex.Store({
       axios({
         method: 'get',
         url: `${API_URL}/articles/list/`,
+        headers: {
+          Authorization: `Token ${context.state.token}`
+        },
       })
         .then((res) => {
           // console.log(res, context)
@@ -293,6 +308,8 @@ export default new Vuex.Store({
         .then((res) => {
           // console.log(res)
           context.commit('SET_LOGIN_PROFILE', res.data)
+
+
         })
         .catch((err) => {
           console.log(err)
@@ -336,23 +353,37 @@ export default new Vuex.Store({
           console.log(err)
         })
     },
+    pickedAritlce(context, article_id) {
+      axios({
+        method: 'get',
+        url: `${API_URL}/articles/${article_id}`,
+      })
+        .then((res) => {
+          context.commit('PICK_ARTICLE', res.data)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    },
     follow(context, payload) {
       const userid = payload.userid
+      const username = payload.username // 로그인한 이용자 이름임
 
+      const payload2 = {
+        username, 
+    }
       axios({
         method: 'post',
-        url: `${API_URL}/${userid}/follow/`,
-        // headers: {
-        //   Authorization: `Token ${this.$store.state.token}`,
-        // },
-        data: {
-          userid
+        url: `${API_URL}/accounts/${userid}/follow/`,
+        headers: {
+          Authorization: `Token ${context.state.token}`,
         },
-        
+
       })
         .then((res) => {
           console.log(res.data)
           context.commit('FOLLOW', res.data)
+          this.dispatch('profile', payload2)
         })
         .catch((err) => {
           console.log(err)

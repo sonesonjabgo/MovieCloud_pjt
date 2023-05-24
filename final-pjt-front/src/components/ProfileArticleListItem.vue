@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h3>{{article.title}}</h3><hr>
+        <h3 @click="imageClick">{{article.title}}</h3><hr>
     </div>
   </template>
   
@@ -10,6 +10,12 @@
       props:{
           article : Object,
       },
+      methods: {
+    imageClick() {
+      this.$store.dispatch("pickedAritlce", this.article.id);
+      this.$router.push({ name: 'ArticleDetailView' })
+    },
+  },
   
   }
   </script>

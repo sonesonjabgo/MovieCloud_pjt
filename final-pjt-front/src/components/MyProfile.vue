@@ -42,16 +42,16 @@ export default {
         }),
         
     },
-    watch: {
-        following (newData) {
-            //following -> msg 데이터가 변경될 때 실행
-            this.profile(newData.following)
-        },
-        follower (newData) {
-            //following -> msg 데이터가 변경될 때 실행
-            this.profile(newData.follower)
-        },
-    }
+    // watch: {
+    //     following (newData) {
+    //         //following -> msg 데이터가 변경될 때 실행
+    //         this.profile(newData.following)
+    //     },
+    //     follower (newData) {
+    //         //following -> msg 데이터가 변경될 때 실행
+    //         this.profile(newData.follower)
+    //     },
+    // }
 }
 </script>
 
