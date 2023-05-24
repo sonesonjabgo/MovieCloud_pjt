@@ -31,6 +31,7 @@ export default new Vuex.Store({
     profile_userfollowing: null,
     searchlist: null,
     movie_detail_data: null,
+    article_detail_data: null,
   },
   getters: {
     login_same(state) {
@@ -141,10 +142,10 @@ export default new Vuex.Store({
       state.movie_detail_data = data
       
     },
-    // PICK_ARTICLE(state, data) {
-    //   state.movie_detail_data = data
+    PICK_ARTICLE(state, data) {
+      state.article_detail_data = data
       
-    // },
+    },
     FOLLOW(state, data) {
       state.profile_userfollower = data.follower_count
       state.profile_userfollowing = data.following_count
