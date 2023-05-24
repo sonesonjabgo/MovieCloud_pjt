@@ -12,24 +12,45 @@
 </template>
 
 <script>
-import ProfileMovieListItem from "./ProfileMovieListItem.vue";
+import ProfileMovieListItem from './ProfileMovieListItem.vue';
+import { mapState } from "vuex";
 
 export default {
-  name: "ProfileMovieList",
-  data() {
-    return {
-      username: this.$store.state.profile_username,
-      movies: this.$store.state.like_movies,
-    };
-  },
-  components: {
-    ProfileMovieListItem,
-  },
-  created() {
-    this.$store.dispatch("getMyLikeMovies");
-  },
-  methods: {},
-};
+    name: "ProfileMovieList",
+    data(){
+      return {
+        username: this.$store.state.login_username,
+        // movies: this.$store.state.like_movies,
+      }
+    },
+    components: {
+      ProfileMovieListItem
+    },
+    created(){
+      this.$store.dispatch('getMyLikeMovies')
+    },
+    computed: {
+      like_movies_overview() {
+        let my_overview = this.movies.map(function(el){
+          return el.overview
+        })
+        return my_overview
+      },
+      ...mapState({
+            movies : state => state.like_movies,
+            // follower : state => state.profile_userfollower,
+
+      }),
+    },
+    methods: {
+    },
+  //   watch : {
+  //     movies(){
+  //         // console.log(newData.title)
+  //         this.$store.dispatch('getMyLikeMovies')
+  //       }
+  // },
+}
 </script>
 
 <style>

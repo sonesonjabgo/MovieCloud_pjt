@@ -8,6 +8,11 @@
     <p>수정시간 : {{ article?.updated_at }}</p><br>
     <p @click="go_myprofile" v-if="this.$store.getters.login_same">작성자 본인임: {{ article?.user }}</p>
     <p @click="go_otherprofile" v-if="!this.$store.getters.login_same">작성자 타인임: {{ article?.user }}</p>
+    <hr>
+    <!-- 댓글 작성할 수 있는 버튼 만들어주기 -->
+    
+
+    <!-- 댓글들 보여주기 -->
     
   </div>
 </template>
@@ -37,6 +42,9 @@ export default {
             axios({
                 method: 'get',
                 url: `${API_URL}/articles/${ this.$route.params.id }/`,
+                headers: {
+                    Authorization: `Token ${this.$store.state.token}`
+                },
             })
             .then((res) => {
                 console.log(res)
@@ -68,16 +76,16 @@ export default {
         go_otherprofile() { // 작성자 누르면 프로필로 넘어갈거
             this.$router.push({name: 'OtherProfileView'})
         },
-        get_writer_profile(){
-            const userid = this.article.id
-            const payload = {
-                userid
-            }
+        // get_writer_profile(){
+        //     const userid = this.article.id
+        //     const payload = {
+        //         userid
+        //     }
 
-            this.$store.dispatch('get_profile', payload)
-            // this.getUserDetail(username)
+        //     this.$store.dispatch('get_profile', payload)
+        //     // this.getUserDetail(username)
 
-        },
+        // },
     }
 }
 </script>

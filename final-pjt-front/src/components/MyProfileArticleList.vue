@@ -12,19 +12,25 @@
 
 <script>
 import ProfileArticleListItem from './ProfileArticleListItem.vue';
+import { mapState } from "vuex";
 
 export default {
     name: "ProfileArticleList",
     data(){
       return {
-        username: this.$store.state.profile_username,
-        articles: this.$store.state.wrote_articles,
+        username: this.$store.state.login_username,
+        // articles: this.$store.state.wrote_articles,
       }
     },
     components: {
       ProfileArticleListItem
     },
-    computed: {
+    computed:{
+        ...mapState({
+            articles : state => state.wrote_articles,
+            // follower : state => state.profile_userfollower,
+
+        }),
     },
     methods: {
     },

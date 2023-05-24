@@ -12,13 +12,14 @@
 
 <script>
 import ProfileMovieListItem from './ProfileMovieListItem.vue';
+import { mapState } from "vuex";
 
 export default {
     name: "ProfileMovieList",
     data(){
       return {
         username: this.$store.state.profile_username,
-        movies: this.$store.state.like_movies,
+        // movies: this.$store.state.like_movies,
       }
     },
     components: {
@@ -28,6 +29,11 @@ export default {
       this.$store.dispatch('getOtherLikeMovies')
     },
     computed: {
+      ...mapState({
+            movies : state => state.like_movies,
+            // follower : state => state.profile_userfollower,
+
+      }),
     },
 
     methods: {

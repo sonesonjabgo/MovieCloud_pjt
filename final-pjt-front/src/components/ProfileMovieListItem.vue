@@ -1,6 +1,6 @@
 <template>
   <div>
-    <img id="poster" :src="getPosterImage" alt="" />
+    <img id="poster" @click="imageClick" :src="getPosterImage" alt="" />
   </div>
 </template>
   
@@ -13,6 +13,12 @@ export default {
   computed: {
     getPosterImage() {
       return `https://image.tmdb.org/t/p/w200${this.movie.poster_path}`;
+    },
+  },
+  methods: {
+    imageClick() {
+      this.$store.dispatch("pickedMovie", this.movie.id);
+      this.$router.push({ name: 'movieDetail' })
     },
   },
 };

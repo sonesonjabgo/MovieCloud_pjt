@@ -9,7 +9,7 @@
         <router-link to="/myprofile">Profile</router-link> <br />
       </div>
       <div v-if="!isLogin" class="right-links"> <!-- login 안 했으면 login, signup만 -->
-        <router-link to="/article">Community</router-link> <br />
+        <!-- <router-link to="/article">Community</router-link> <br /> -->
         <router-link to="/login">Login</router-link> <br />
         <router-link to="/signup">Signup</router-link> <br />
       </div>

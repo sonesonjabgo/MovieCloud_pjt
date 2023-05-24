@@ -5,13 +5,13 @@
       <p>팔로워        {{follower}}</p>
       <!-- <p>3    10</p> -->
   
-      <button @click="follow" v-if="isfollowing">언팔로우</button>
-      <button @click="follow" v-if="!isfollowing">팔로우</button>
+      <button @click="follow" v-if="this.isFollowing">언팔로우</button>
+      <button @click="follow" v-else>팔로우</button>
     </div>
 </template>
   
 <script>
-import { mapState } from "vuex";
+import { mapGetters, mapState } from "vuex";
 
 export default {
     name: 'OthersProfileView',
@@ -26,13 +26,15 @@ export default {
         this.profile()
     },
     computed:{
-        isfollowing(){
-            return this.$store.getters.isFollowing
-        },
+        // isfollowing(){
+        //     return this.$store.getters.isFollowing
+        // },
         ...mapState({
             following : state => state.profile_userfollowing,
             follower : state => state.profile_userfollower,
+
         }),
+        ...mapGetters(['isFollowing'])
     },
     methods: {
         profile(){ // 현재 페이지의 user 정보를 state에 profile_user로 다 저장
@@ -46,8 +48,9 @@ export default {
         },
         follow(){
             const userid = this.userid
+            const username = this.$store.state.login_username
             const payload = {
-                userid,
+                userid, username
             }
 
             this.$store.dispatch('follow', payload)
