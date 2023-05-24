@@ -1,0 +1,65 @@
+[
+{
+    "model": "accounts.user",
+    "pk": 1,
+    "fields": {
+        "id": 1,
+        "username": "김싸피",
+        "password": "12345"
+    }
+},
+{
+    "model": "accounts.user",
+    "pk": 2,
+    "fields": {
+        "id": 2,
+        "username": "이싸피",
+        "password": "12345"
+    }
+},
+{
+    "model": "accounts.user",
+    "pk": 3,
+    "fields": {
+        "id": 3,
+        "username": "박싸피",
+        "password": "12345"
+    }
+},
+{
+    "model": "accounts.user",
+    "pk": 4,
+    "fields": {
+        "id": 4,
+        "username": "최싸피",
+        "password": "12345"
+    }
+},
+{
+    "model": "accounts.user",
+    "pk": 5,
+    "fields": {
+        "id": 5,
+        "username": "손싸피",
+        "password": "12345"
+    }
+},
+{
+    "model": "accounts.user",
+    "pk": 6,
+    "fields": {
+        "id": 6,
+        "username": "정싸피",
+        "password": "12345"
+    }
+},
+{
+    "model": "accounts.user",
+    "pk": 7,
+    "fields": {
+        "id": 7,
+        "username": "싸피",
+        "password": "12345"
+    }
+}
+]

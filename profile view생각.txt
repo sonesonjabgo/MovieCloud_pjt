@@ -63,3 +63,10 @@ token 줘야하는 기능들
     - 댓글 작성 버튼 누르면 create comment view.vue로 이동.
     - create comment view.vue에서 axios 요청보내기
 
+
+-----------------------------------------------------
+더미 데이터 만들기
+user는 1번부터 7번까지 존재
+
+articles.json 에서 comments_users는 수동으로 comments 만들고 맞춰서 넣으면 될듯
+
