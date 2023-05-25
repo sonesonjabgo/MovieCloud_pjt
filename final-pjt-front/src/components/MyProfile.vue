@@ -18,6 +18,14 @@ export default {
             username: this.$store.state.login_username,
         }
     },
+    computed:{
+        ...mapState({
+            following : state => state.login_userfollowing,
+            follower : state => state.login_userfollower,
+        }),
+        ...mapState(['login_username']),
+        
+    },
     created(){
         this.profile()
     },
@@ -34,13 +42,7 @@ export default {
             this.$store.dispatch('profile', username)
         }
     },
-    computed:{
-        ...mapState({
-            following : state => state.login_userfollowing,
-            follower : state => state.login_userfollower,
-        }),
-        
-    },
+    
     // watch: {
     //     following (newData) {
     //         //following -> msg 데이터가 변경될 때 실행
