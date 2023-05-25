@@ -81,7 +81,6 @@ export default {
     movies : {
       deep : true,
       handler(){
-        console.log('123123')
         this.get_wordcloud()
       }
     }
@@ -93,4 +92,7 @@ export default {
 </script>
 
 <style>
+#chart {
+  height: 300px;
+}
 </style>

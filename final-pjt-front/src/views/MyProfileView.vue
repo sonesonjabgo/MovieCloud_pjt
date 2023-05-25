@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div id="profile">
     <!-- 내 프로필 보는거 -->
-    <h1 class="detail_title">Profile</h1>
+    <!-- <h1 class="detail_title">Profile</h1> -->
     <div>
         <MyProfile /> <!-- 로그인 한 사람이랑 프로필 페이지 주인이랑 같을 경우 -->
     </div>
@@ -57,6 +57,7 @@ export default {
 
 <style>
 .detail_title {
+    text-align: left;
   font-size: 70px;
   font-weight: bold;
 }

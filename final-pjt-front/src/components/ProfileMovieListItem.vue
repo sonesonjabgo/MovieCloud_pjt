@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="profileImg">
     <img id="poster" @click="imageClick" :src="getPosterImage" alt="" />
   </div>
 </template>
@@ -24,5 +24,8 @@ export default {
 };
 </script>
   
-  <style>
+<style>
+#profileImg {
+  width: fit-content;
+}
 </style>

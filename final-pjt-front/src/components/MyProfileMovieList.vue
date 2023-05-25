@@ -1,12 +1,11 @@
 <template>
   <div>
     <h3>{{ username }}님이 좋아요 누른 영화</h3>
-    <div class="row">
+    <div id="card_div" class="row flex-nowrap overflow-auto">
       <ProfileMovieListItem
         v-for="movie in movies"
         :key="movie.id"
         :movie="movie"
-        class="col-lg-2 col-md-3 col-sm-4 col-6"
       />
     </div>
   </div>
@@ -38,4 +37,8 @@ export default {
 };
 </script>
 <style>
+#card_div {
+  width: auto;
+  padding: 40px;
+}
 </style>

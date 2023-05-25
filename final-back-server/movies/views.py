@@ -103,7 +103,7 @@ def movieCloud(request):
     rn = rhinoMorph.startRhino()
     morphed_data = []
     for data in overviews:
-        morphed_data_each = rhinoMorph.onlyMorph_list(rn, data, pos=['NNG', 'NNP', 'VV', 'VA', 'XR', 'IC', 'MM', 'MAG', 'MAJ'], eomi= True)
+        morphed_data_each = rhinoMorph.onlyMorph_list(rn, data, pos=['NNG', 'NNP', 'NNB', 'VV', 'VA', 'VCP', 'VCN', 'XR'], eomi= True)
         # print(morphed_data_each)
         # joined_data_each = ' '.join(morphed_data_each) # 문자열을 하나로 연결
         if morphed_data_each: # 내용이 있는 경우만 저장하게 함
