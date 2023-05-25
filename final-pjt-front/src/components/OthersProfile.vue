@@ -45,6 +45,7 @@ export default {
             }
   
             this.$store.dispatch('get_profile', payload)
+            this.$store.dispatch('getMyLikeMovies')
         },
         follow(){
             const userid = this.userid
