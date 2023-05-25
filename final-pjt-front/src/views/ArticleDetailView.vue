@@ -69,6 +69,7 @@ export default {
                 this.getUserDetail(this.article.user)
                 this.$store.dispatch('get_profile', this.article.user)
                 this.getCommentList(this.article.id)
+                this.$store.dispatch('getOtherLikeMovies')
                 console.log('-------------------------')
                 console.log(this.article.id)
             })

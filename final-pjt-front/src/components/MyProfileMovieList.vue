@@ -27,7 +27,7 @@ export default {
   },
   computed: {
     ...mapState({
-      movies: (state) => state.like_movies,
+      movies: (state) => state.like_my_movies,
     }),
   },
   created(){

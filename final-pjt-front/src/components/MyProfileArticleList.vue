@@ -4,9 +4,9 @@
     <br>
     <h1>{{ username }}님이 작성한 게시글</h1>
     <br>
-    <div>
+    <div class="article-item">
       <ProfileArticleListItem 
-      v-for="article in articles" :key="article.id" :article="article"
+      v-for="article in articles" :key="article.id" :article="article" class="article-list"
       />
     </div>
     
@@ -45,5 +45,13 @@ export default {
 </script>
 
 <style>
+.article-item {
+  border: 1px solid #ccc;
+  /* margin-bottom: 10px; */
+  /* margin-left: 10px;
+  margin-right: 10px; */
 
+  padding: 10px;
+  width: 70;
+}
 </style>

@@ -18,7 +18,7 @@ export default {
   name: "WordCloud",
   data() {
     return {
-      movies: this.$store.state.like_movies,
+      movies: this.$store.state.like_my_movies,
     };
   },
   methods: {

@@ -30,6 +30,7 @@ export default {
   methods: {
     getArticles() {
       this.$store.dispatch('getArticles')
+      this.$store.dispatch('setlike_other_movies')
     }
   }
 }

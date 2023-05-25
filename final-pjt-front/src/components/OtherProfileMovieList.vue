@@ -1,9 +1,11 @@
 <template>
   <div>
     <h3>{{ username }}님이 좋아요 누른 영화</h3>
-    <div>
+    <div id="card_div" class="row flex-nowrap overflow-auto">
       <ProfileMovieListItem 
-      v-for="movie in movies" :key="movie.id" :movie="movie"
+      v-for="movie in movies"
+      :key="movie.id"
+      :movie="movie"
       />
     </div>
     
@@ -30,7 +32,7 @@ export default {
     },
     computed: {
       ...mapState({
-            movies : state => state.like_movies,
+            movies : state => state.like_other_movies,
             // follower : state => state.profile_userfollower,
 
       }),
@@ -43,5 +45,8 @@ export default {
 </script>
 
 <style>
-
+#card_div {
+  width: auto;
+  padding: 40px;
+}
 </style>

@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h3 @click="articleClick">{{ article.title }}</h3>
+  <div class="post-item">
+    <h3 @click="articleClick" class="post-title router-link">{{ article.title }}</h3>
     <hr />
   </div>
 </template>
@@ -21,5 +21,20 @@ export default {
 };
 </script>
   
-  <style>
+<style>
+.post-item {
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 10px;
+}
+.post-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #61A2DA;
+}
+.router-link {
+  text-decoration: none;
+}
 </style>

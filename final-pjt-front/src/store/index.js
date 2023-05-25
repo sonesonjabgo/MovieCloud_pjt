@@ -16,7 +16,8 @@ export default new Vuex.Store({
   ],
   state: {
     token: null,
-    like_movies: null,
+    like_my_movies: null,
+    like_other_movies: null,
     wrote_articles: [],
     // users: [],
     articles: [], // 전체 게시글
@@ -68,7 +69,7 @@ export default new Vuex.Store({
       // const like_movies = movies.filter((element)=>{ element.like_users.includes(state.profile_userid)})
       const like_movies = movies.filter((element) => element.like_users.includes(state.login_userid));
       // console.log(like_movies)
-      state.like_movies = like_movies
+      state.like_my_movies = like_movies
     },
     GET_OTHER_LIKE_MOVIES(state, movies) {
       // console.log(movies)
@@ -77,7 +78,7 @@ export default new Vuex.Store({
       // const like_movies = movies.filter((element)=>{ element.like_users.includes(state.profile_userid)})
       const like_movies = movies.filter((element) => element.like_users.includes(state.profile_userid));
       // console.log(like_movies)
-      state.like_movies = like_movies
+      state.like_other_movies = like_movies
     },
     GET_MY_WROTE_ARTICLES(state, articles) {
       console.log(articles)
@@ -90,7 +91,8 @@ export default new Vuex.Store({
     },
     DELETE_TOKEN(state) {
       state.token = null
-      state.like_movies = null
+      state.like_my_movies = null
+      state.like_other_movies = null
 
       state.login_username = null
       state.login_userid = null
@@ -160,6 +162,10 @@ export default new Vuex.Store({
 
       
       // state.profile_following_list = data.followings
+    },
+    SET_LIKE_OTHER_MOVIES(state) {
+      state.like_other_movies = null
+
     },
   },
   actions: {
@@ -305,6 +311,9 @@ export default new Vuex.Store({
         .catch((err) => {
           console.log(err)
         })
+    },
+    setlike_other_movies(context) { // community에 들어가면 like_other_movies 초기화 시켜서 다른 사람 프로필 들어가면 빈화면에서 영화 띄우게
+      context.commit('SET_LIKE_OTHER_MOVIES')
     },
     // get_comment(context, articleid) { // article에 comment를 보여주기 위한
     //   axios({
