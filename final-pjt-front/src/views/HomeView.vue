@@ -78,7 +78,7 @@ export default {
     this.getHighList()
 
     if (this.isLogin) {
-      console.log(this.isLogin)
+      // console.log(this.isLogin)
       this.$store.dispatch('profile', this.login_username)
       this.$store.dispatch('getMyLikeMovies')
     }

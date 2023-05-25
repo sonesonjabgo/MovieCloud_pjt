@@ -64,14 +64,14 @@ export default {
                 },
             })
             .then((res) => {
-                console.log(res)
+                // console.log(res)
                 this.article = res.data
                 this.getUserDetail(this.article.user)
                 this.$store.dispatch('get_profile', this.article.user)
                 this.getCommentList(this.article.id)
                 this.$store.dispatch('getOtherLikeMovies')
-                console.log('-------------------------')
-                console.log(this.article.id)
+                // console.log('-------------------------')
+                // console.log(this.article.id)
             })
             .catch((err) => {
                 console.log(err)
@@ -83,7 +83,7 @@ export default {
                 url: `${API_URL}/accounts/${userid}/info/`,
             })
             .then((res) => {
-                console.log(res)
+                // console.log(res)
                 this.article.user = res.data.username
                 this.writer = res.data.username
             })

@@ -81,7 +81,7 @@ export default new Vuex.Store({
       state.like_other_movies = like_movies
     },
     GET_MY_WROTE_ARTICLES(state, articles) {
-      console.log(articles)
+      // console.log(articles)
       const wrote_articles = articles.filter((element)=> element.user_id == state.login_userid )
       state.wrote_articles = wrote_articles
     },
@@ -118,7 +118,7 @@ export default new Vuex.Store({
     //   state.article_comments = comments
     // },
     SET_LOGIN_PROFILE(state, userdata) { // 로그인한 이용자 정보 저장
-      console.log(userdata)
+      // console.log(userdata)
       state.login_username = userdata.username
       state.login_userid = userdata.id
       state.login_userfollower = userdata.follower_count
@@ -128,7 +128,7 @@ export default new Vuex.Store({
 
     },
     SET_WRITER_PROFILE(state, userdata) { // 현재 프로필 페이지의 user 정보 저장 (내가 내 프로필 볼 경우 대비)
-      console.log(userdata)
+      // console.log(userdata)
       state.profile_username = userdata.username
       state.profile_userid = userdata.id
       state.profile_userfollower = userdata.follower_count
@@ -260,7 +260,7 @@ export default new Vuex.Store({
         },
       })
         .then((res) => {
-          console.log(res)
+          // console.log(res)
           context.commit('GET_MY_WROTE_ARTICLES', res.data)
         })
         .catch((err) => {
@@ -276,7 +276,7 @@ export default new Vuex.Store({
         },
       })
         .then((res) => {
-          console.log(res)
+          // console.log(res)
           context.commit('GET_OTHER_WROTE_ARTICLES', res.data)
         })
         .catch((err) => {
@@ -339,7 +339,7 @@ export default new Vuex.Store({
         url: `${API_URL}/accounts/${username}/`,
       })
         .then((res) => {
-          console.log(res)
+          // console.log(res)
           context.commit('SET_LOGIN_PROFILE', res.data)
 
 
@@ -357,7 +357,7 @@ export default new Vuex.Store({
         url: `${API_URL}/accounts/${userid}/info/`,
       })
         .then((res) => {
-          console.log(res)
+          // console.log(res)
           context.commit('SET_WRITER_PROFILE', res.data)
         })
         .catch((err) => {

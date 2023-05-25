@@ -1,7 +1,6 @@
 <template>
   <div>
     <!-- 글 작성자 프로필 보는거 -->
-    <h1>profile</h1>
     <div>
         <OthersProfile /> <!-- 로그인 한 사람이랑 프로필 페이지 주인이랑 다를 경우 -->
     </div>
