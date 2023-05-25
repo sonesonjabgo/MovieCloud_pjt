@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3>{{ username }}님이 좋아요 누른 영화</h3>
+    <h1>{{ username }}님이 좋아요 누른 영화</h1>
     <div id="card_div" class="row flex-nowrap overflow-auto">
       <ProfileMovieListItem
         v-for="movie in movies"

@@ -1,6 +1,9 @@
 <template>
   <div>
-    <h3>{{ username }}님이 작성한 게시글</h3>
+    <br>
+    <br>
+    <h1>{{ username }}님이 작성한 게시글</h1>
+    <br>
     <div>
       <ProfileArticleListItem 
       v-for="article in articles" :key="article.id" :article="article"

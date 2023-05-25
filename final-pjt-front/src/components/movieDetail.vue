@@ -1,10 +1,9 @@
 <template>
   <div>
-    <h1 class="detail_title">Detail</h1>
+    <h1 class="detail_title">{{ movie_detail_data.title }}</h1>
     <div id="movie_detail_div">
-      <img :src="getPosterImage" />
+      <img id="movie_poster" :src="getPosterImage" />
       <div class="text-content">
-        <h1>{{ movie_detail_data.title }}</h1>
         <p>개봉일 : {{ movie_detail_data.release_date }}</p>
         <p>{{ movie_detail_data.overview }}</p>
         <p>평점 : {{ movie_detail_data.vote_average }}</p>
@@ -13,11 +12,9 @@
           {{ movie_detail_data.like_users.length }}명이 이 영화를 좋아합니다.
         </p>
         <button @click="likesbtn">좋아요</button>
-        <iframe :src="frameSrc" frameborder="0"> </iframe>
-        <!-- {{ frameSrc }}
-        {{ oneVideo}} -->
       </div>
     </div>
+      <iframe id="iframe" :src="frameSrc" frameborder="0"> </iframe>
   </div>
 </template>
 
@@ -49,7 +46,7 @@ export default {
           // watch로 state 의 movie_detail_data 좋아요 확인하게 함
           this.$store.dispatch("pickedMovie", this.movie_detail_data.id);
           // this.$store.dispatch("profile", this.$store.state.login_username);
-          this.$store.dispatch('getMyLikeMovies')
+          this.$store.dispatch("getMyLikeMovies");
         })
         .catch((err) => {
           console.log(err);
@@ -78,7 +75,7 @@ export default {
   computed: {
     ...mapState(["movie_detail_data", "token"]),
     ...mapState({
-      movieDetailData : state => state.movie_detail_data
+      movieDetailData: (state) => state.movie_detail_data,
     }),
     // ...mapGetters(['pickedTitle']),
     getPosterImage() {
@@ -86,18 +83,18 @@ export default {
     },
 
     frameSrc() {
-      return `https://www.youtube.com/embed/${this.oneVideo?.id.videoId}`
+      return `https://www.youtube.com/embed/${this.oneVideo?.id.videoId}`;
     },
   },
-  watch : {
-        movieDetailData(newData){
-          // console.log(newData.title)
-          this.search(newData.title)
-        }
+  watch: {
+    movieDetailData(newData) {
+      // console.log(newData.title)
+      this.search(newData.title);
+    },
   },
-  created () {
+  created() {
     window.scrollTo(0, 0);
-  }
+  },
 };
 </script>
 
@@ -118,14 +115,17 @@ export default {
   align-items: center;
 }
 
-img {
-  width: 200px; /* 이미지 크기를 원하는 대로 조정해주세요 */
-  height: auto;
-  margin-right: 10px; /* 이미지와 텍스트 사이 간격을 조정해주세요 */
+#movie_poster {
+  width: 290px;
+  height: 430px;
 }
 .text-content {
   display: flex;
   flex-direction: column;
   padding: 30px;
+}
+#iframe{
+  width: 100%;
+  height: 600px;
 }
 </style>

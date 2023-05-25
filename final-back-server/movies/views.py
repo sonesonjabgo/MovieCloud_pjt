@@ -97,13 +97,13 @@ def likes(request, movie_id):
 @api_view(['GET','POST'])
 # @permission_classes([IsAuthenticated])
 def movieCloud(request):
-    stopwords_ko = ["하다", "있다", "되다", "그", "않다", "없다", "나", "말", "사람", "이", "보다", "한", "때", "년", "같다", "대하다", "일", "이", "생각", "위하다", "때문", "그것", "그러나", "가다", "받다", "그렇다", "알다", "사회", "더", "그녀", "문제", "오다", "그리고", "크다", "속"]
+    stopwords_ko = ["뇨","것","되","하","이다", "하다", "있다", "되다", "그", "않다", "없다", "나", "말", "사람", "이", "보다", "한", "때", "년", "같다", "대하다", "일", "이", "생각", "위하다", "때문", "그것", "그러나", "가다", "받다", "그렇다", "알다", "사회", "더", "그녀", "문제", "오다", "그리고", "크다", "속"]
     # print(request.data['overviews'])
     overviews = request.data['overviews']
     rn = rhinoMorph.startRhino()
     morphed_data = []
     for data in overviews:
-        morphed_data_each = rhinoMorph.onlyMorph_list(rn, data, pos=['NNG', 'NNP', 'NNB', 'VV', 'VA', 'VCP', 'VCN', 'XR'], eomi= True)
+        morphed_data_each = rhinoMorph.onlyMorph_list(rn, data, pos=['NNG', 'NNP', 'NNB', 'XR'])
         # print(morphed_data_each)
         # joined_data_each = ' '.join(morphed_data_each) # 문자열을 하나로 연결
         if morphed_data_each: # 내용이 있는 경우만 저장하게 함

@@ -67,6 +67,11 @@ export default {
 </script>
 
 <style>
+img {
+  width: 200px; /* 이미지 크기를 원하는 대로 조정해주세요 */
+  height: auto;
+  margin-right: 10px; /* 이미지와 텍스트 사이 간격을 조정해주세요 */
+}
 #to_margin {
   margin-left: 60px;
   margin-right: 60px;
