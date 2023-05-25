@@ -5,45 +5,50 @@
       <div class="search-container">
         <h1 class="welcome_text">Welcome</h1>
         <h3 class="welcome_content">내가 몰랐던, 나의 취향</h3>
+        <hr />
         <SearchBar />
       </div>
     </div>
-    <div id="high-list" class="container">
-      <div id="classification_name">
-        <h1 class="big-text">High rated</h1>
-      </div>
-      <div id="card_div" class="row flex-nowrap overflow-auto">
-        <HighListItem
-          v-for="highmovie in highList"
-          :key="highmovie.id"
-          :highmovie="highmovie"
-        />
-      </div>
+    <!-- <div id="high-list" class="container"> -->
+    <!-- <div id="classification_name"> -->
+    <br />
+    <h1 id="classification_name" class="big-text">
+      요즘엔 이 영화들이 인기 있어요.
+    </h1>
+    <!-- </div> -->
+    <div id="card_div" class="row flex-nowrap overflow-auto">
+      <HighListItem
+        v-for="highmovie in highList"
+        :key="highmovie.id"
+        :highmovie="highmovie"
+      />
     </div>
-    <br>
-    <div id="top-list" class="container">
-      <div id="classification_name">
-        <h1 class="big-text">Top</h1>
-      </div>
-      <div id="card_div" class="row flex-nowrap overflow-auto">
-        <TopListItem
-          v-for="topmovie in topList"
-          :key="topmovie.id"
-          :topmovie="topmovie"
-        />
-      </div>
+    <!-- </div> -->
+    <br />
+    <!-- <div id="top-list" class="container"> -->
+    <!-- <div id="classification_name"> -->
+    <br />
+    <h1 class="big-text">오늘은 고전 명작 영화 어때요?</h1>
+    <!-- </div> -->
+    <div id="card_div" class="row flex-nowrap overflow-auto">
+      <TopListItem
+        v-for="topmovie in topList"
+        :key="topmovie.id"
+        :topmovie="topmovie"
+      />
     </div>
+    <!-- </div> -->
   </div>
 </template>
 
 <script>
-import axios from "axios"
+import axios from "axios";
 
-import SearchBar from "@/components/SearchBar.vue"
-import TopListItem from "@/components/TopListItem.vue"
-import HighListItem from "@/components/HighListItem.vue"
+import SearchBar from "@/components/SearchBar.vue";
+import TopListItem from "@/components/TopListItem.vue";
+import HighListItem from "@/components/HighListItem.vue";
 
-const API_URL = "http://127.0.0.1:8000"
+const API_URL = "http://127.0.0.1:8000";
 
 export default {
   name: "HomeView",
@@ -56,7 +61,7 @@ export default {
   },
   computed: {
     getPosterImage() {
-      return `https://image.tmdb.org/t/p/w1280${this.mainPoster.backdrop_path}`
+      return `https://image.tmdb.org/t/p/w1280${this.mainPoster.backdrop_path}`;
       // return `https://image.tmdb.org/t/p/w1280/dqK9Hag1054tghRQSqLSfrkvQnA.jpg`
     },
   },
@@ -66,8 +71,8 @@ export default {
     HighListItem,
   },
   created() {
-    this.getTopList()
-    this.getHighList()
+    this.getTopList();
+    this.getHighList();
     // this.getLikeMovies()
     // this.getArticles()
     // this.getUsers()
@@ -79,13 +84,13 @@ export default {
         url: `${API_URL}/movies/top_rated/`,
       })
         .then((res) => {
-          this.topList = res.data
+          this.topList = res.data;
           // console.log(this.mainPoster)
           // console.log(this.topList)
         })
         .catch((err) => {
-          console.log(err)
-        })
+          console.log(err);
+        });
     },
     getHighList() {
       axios({
@@ -94,13 +99,13 @@ export default {
       })
         .then((res) => {
           this.mainPoster =
-            res.data[Math.floor(Math.random() * res.data.length)]
+            res.data[Math.floor(Math.random() * res.data.length)];
           this.highList = res.data;
           // console.log(this.highList)
         })
         .catch((err) => {
-          console.log(err)
-        })
+          console.log(err);
+        });
     },
     // getLikeMovies(){
     //   this.$store.dispatch('getLikeMovies')
@@ -125,16 +130,17 @@ export default {
   font-size: 100px;
   font-weight: bold;
 }
-.welcome_content{
+.welcome_content {
   color: white;
   font-size: 60px;
 }
-.container{
+.container {
   width: auto;
 }
 #mainposter {
   width: auto;
   height: 800px;
+  border-radius: 20px;
   /* filter: sepia(120%); */
   filter: brightness(50%);
 }
@@ -145,7 +151,7 @@ export default {
   /* border: 1px solid black; */
   object-fit: cover;
 }
-#card_div{
+#card_div {
   width: auto;
   padding: 40px;
 }
@@ -162,9 +168,10 @@ export default {
 .big-text {
   font-size: 60px; /* 원하는 글자 크기로 조정 */
   font-weight: bold;
-  color: #5784be;
+  color: #6CB7DA;
 }
 #classification_name h1 {
-  text-align: left;
+  /* text-align: left; */
+  padding: 20px;
 }
 </style>

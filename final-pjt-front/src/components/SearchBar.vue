@@ -54,9 +54,13 @@ export default {
 
 <style>
 .search-input {
-  width: 400px;
+  /* border-radius: 20px; */
+  width: 600px;
   padding: 10px;
   font-size: 16px;
+}
+.search-input::placeholder {
+  text-align: center; /* 가운데 정렬 */
 }
 .search-submit {
   padding: 10px;

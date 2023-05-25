@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <nav :class="{ 'nav-fixed': isNavFixed, 'nav-hidden': isNavHidden }">
-      <router-link to="/" class="left-link">Home</router-link>
+      <router-link to="/" class="left-link"><img src="assets/movieCloud_logo.png" alt=""></router-link>
       <!-- <router-link to="/about">About</router-link> | -->
       <div v-if="isLogin" class="right-links"> <!-- login 했으면 profile, logout만 -->
         <router-link to="/article">Community</router-link> <br />
@@ -62,7 +62,7 @@ export default {
 
 <style>
 #router-view-bg {
-  background-color: #D9D9D9;
+  background-color: #fffffd;
   /* height: 1850px; */
 }
 #app {
@@ -78,7 +78,7 @@ export default {
   top: 0;
   left: 0;
   right: 0;
-  background-color: #316f9c;
+  background-color: #61A2DA;
   z-index: 999;
   transition: transform 1.5s ease-out;
 }
@@ -90,7 +90,7 @@ nav {
   height: 80px;
   justify-content: space-between;
   align-items: center;
-  background-color: #316f9c;
+  background-color: #61A2DA;
 }
 .left-link {
   margin-right: auto;
@@ -102,11 +102,11 @@ nav {
 nav a {
   font-size: 40px;
   font-weight: bold;
-  color: #5d8fd1;
+  color: #fffffd;
   text-decoration: none;
 }
 nav a.router-link-exact-active {
-  color: rgb(190, 110, 243);
+  color: #D75725;
 }
 
 </style>
