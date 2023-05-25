@@ -12,6 +12,7 @@
 
 <script>
 import axios from 'axios'
+
 const API_URL = 'http://127.0.0.1:8000'
 
 export default {
@@ -45,7 +46,7 @@ export default {
             })
             .then(() => {
                 // console.log('dsafkafafgilf')
-                this.$router.push({name: 'ArticleView'})
+                this.$router.push({name: 'ArticleDetailView', params: { id: this.articleid }} )
             })
             .catch((err) => {
                 console.log(err)

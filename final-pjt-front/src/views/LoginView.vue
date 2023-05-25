@@ -38,7 +38,7 @@ export default {
             }
 
             this.$store.dispatch('login', payload)
-            this.$store.dispatch('profile', payload)
+            // this.$store.dispatch('profile', payload)
             // this.getUserDetail(username)
 
         },

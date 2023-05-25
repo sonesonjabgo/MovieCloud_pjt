@@ -80,7 +80,7 @@ const routes = [
     component: CommentCreateView
   },
   {
-    path: '/detailarticle',
+    path: '/detailarticle/:id',
     name: 'ArticleDetailView',
     component: ArticleDetailView
   },

@@ -42,7 +42,8 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from "axios"
+import { mapGetters, mapState } from "vuex";
 
 import SearchBar from "@/components/SearchBar.vue";
 import TopListItem from "@/components/TopListItem.vue";
@@ -64,6 +65,8 @@ export default {
       return `https://image.tmdb.org/t/p/w1280${this.mainPoster.backdrop_path}`;
       // return `https://image.tmdb.org/t/p/w1280/dqK9Hag1054tghRQSqLSfrkvQnA.jpg`
     },
+    ...mapGetters(['isLogin']),
+    ...mapState(['login_username']),
   },
   components: {
     SearchBar,
@@ -71,8 +74,15 @@ export default {
     HighListItem,
   },
   created() {
-    this.getTopList();
-    this.getHighList();
+    this.getTopList()
+    this.getHighList()
+
+    if (this.isLogin) {
+      console.log(this.isLogin)
+      this.$store.dispatch('profile', this.login_username)
+      this.$store.dispatch('getMyLikeMovies')
+    }
+
     // this.getLikeMovies()
     // this.getArticles()
     // this.getUsers()
