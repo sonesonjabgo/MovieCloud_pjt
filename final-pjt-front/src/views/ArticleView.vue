@@ -38,14 +38,18 @@ export default {
 <style>
 /* 게시판 컨테이너 */
 .board-container {
-  max-width: 800px;
-  margin: 0 auto;
+  /* max-width: 800px; */
+  /* margin: 0 auto; */
   padding: 20px;
+  width: 100%;
+  /* height: 3000px */
+  
 }
 /* 게시물 목록 */
 .post-list {
   list-style: none;
   padding: 0;
+  /* width: 800px; */
 }
 
 /* 버튼 스타일 */
